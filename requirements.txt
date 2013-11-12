@@ -1,0 +1,9 @@
+Django==1.5.5
+South==0.8.2
+Werkzeug==0.9.4
+argparse==1.2.1
+## FIXME: could not find svn URL in dependency_links for this package:
+flup==1.0.3.dev-20110405
+ipython==1.1.0
+psycopg2==2.5.1
+wsgiref==0.1.2
