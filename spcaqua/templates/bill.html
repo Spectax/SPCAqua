@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load url from future %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static "css/bill.css" %}"> 
+{% endblock %}
+
+{% block wrapper_class %}body-wrapper{% endblock %}
+{% block body %}
+<div class="body-container">
+
+<div class="main-wrapper">
+	<div class="container-wrapper">
+		<div class="card-white">
+			<button class="bill-button" onclick="">Submit Bill</button>
+			<h3 style="float:left"><input id="" class="bill-input" type="text" placeholder="Name" /></h3>
+			<h3 style="float:right"><input id="" class="bill-input" type="text" placeholder="Place" /></h3>
+			<h2>Bill</h2>
+			<table id="billTable" class="bill-table">
+				<tr>
+					<th>S.No</th>
+					<th>Count</th>
+					<th>Quantity (kgs)</th>
+					<th>Rate</th>
+					<th>Rupees</th>
+					<th></th>
+				</tr>
+			</table>
+			<button class="bill-button" onclick="addRow()">Add Row</button>
+			
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script src="{% static "js/bill.js" %}" ></script>
+{% endblock %}

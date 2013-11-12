@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static "css/search.css" %}"> 
+{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="main-wrapper">
+	    <div class="container-wrapper">
+	    	<div class="card-white">
+			    <h2>Date:</h2>
+		    </div>
+	    </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load url from future %}
+
+{% block wrapper_class %}body-wrapper{% endblock %}
+{% block body %}
+<div class="body-container">
+
+    <div class="main-wrapper">
+        <div class="section title">
+            <div class="container-wrapper">
+                <h1 class="main-heading">Sai Sri Prawn Purchasing Center</h1>
+                <h3>Gollavantippa Road, Bhimavaram - 2</h3>
+                <div class="card-black-transparent">
+                    <h2>K. Lakshmana Swamy, Managing Director</h2>
+                    <h3>Cell: 94402 73397</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="section about">
+            <div class="container-wrapper">
+            <h1>About Us</h1>
+            <p>		
+            SPC (p) Ltd., formerly a partnership, started processing sea food as a 
+            merchant packer and managed by K. Lakshmana Swamy as 
+            managing director in 1992, with the main objective of exporting 
+            marine products nationally.
+            </p>
+            <p>
+            K. Lakshmana Swamy has thorough practical knowledge 
+            about the culture and processing of sea food concentrated mainly 
+            on prawns.
+            </p>
+            <p>
+            Quality and hygiene conscious in our processing and 
+            production catered to varied importers and quickly built a 
+            reputation for a class product and satisfied customers list.
+            We can process, pack and export on specified customer oriented 
+            varieties.
+            </p>
+            <p>
+            The company also exports customised brands such as
+            Vannami, Tiger Harvest as per customer requirements.
+            </p>
+            </div>
+        </div>
+    
+        <div class="section leadership">
+            <div class="container-wrapper">
+                <div class="card-black-transparent">
+                    <span class="leadership-description">The managing director of the company is K. Lakshmana Swamy. His experience in shrimp culture, processing, production, and exports since 1992 and his excellent business acumen leads the company to higher achievements.</span>
+                    <span class="leadership-image">
+                        <img src="{% static "images/md.jpg" %}" />
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="section products">
+            <div class="container-wrapper">
+                <h1>Products</h1>
+                <p>We can supply the below products as per specification of buyers</p>
+                <ul class="no-bullets">
+                    <li>Vannami</li>
+                    <li>Black Tiger</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section contact">
+            <div class="container-wrapper">
+                <h1>Contact Us</h1>
+                <p>For international and domestic enquiries, spcaqua@gmail.com</p>
+                <h2>Address</h2>
+                <p>Address goes here</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container-wrapper">
+                    (c)2013 SPC Aqua. Maintained by <a style="color:white;" href="http://www.spectaxstudio.com">Spectax Studio</a>.
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="menu-item" onclick="scrollPage('title')"><div class="card-white">Home</div></div>
+        <div class="menu-item" onclick="scrollPage('about')"><div class="card-white">About Us</div></div>
+        <div class="menu-item" onclick="scrollPage('leadership')"><div class="card-white">Leadership</div></div>
+        <div class="menu-item" onclick="scrollPage('products')"><div class="card-white">Products</div></div>
+        <div class="menu-item" onclick="scrollPage('contact')"><div class="card-white">Contact Us</div></div>
+        <a href="{% if user.is_authenticated %}{% url "logout" %}{% else %}{% url "login" %}{% endif %}"><div class="card-white">{% if user.is_authenticated %}logout{% else %}login{% endif %}</div></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{% static "js/jquery.scrollTo.min.js" %}"></script>
+    <script>
+    function scrollPage(tag)
+    {
+            $.scrollTo('.'+tag,300,{easing:'swing'});
+            return false;
+    }
+    </script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static "css/login.css" %}"> 
+{% endblock %}
+
+{% block body %}
+<div class="body-container">
+    <div class="main-wrapper">
+	    <div class="container-wrapper">
+	    	<div class="card-white">
+			    <h1>Login For Admin Panel</h1>
+			    <form action="{% url "login" %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <p><input class="clean-input" type="text" name="username" placeholder="Username" /></p>
+                    {{ form.username.errors }}
+                    <p><input class="clean-input" type="password" name="password" placeholder="Password" /></p>
+                    {{ form.password.errors }}
+			        <p><button type="submit" class="clean-button">Login</button></p>
+                    <input type="hidden" name="next" value="{{ next }}" />
+			    </form>
+		    </div>
+	    </div>
+    </div>
+</div>
+
+<div class="footer-wrapper">
+(c)2013 SPC Aqua. Maintained by Spectax Studio.
+</div>
+
+{% endblock %}

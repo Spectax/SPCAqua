@@ -1,0 +1,43 @@
+body {
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
+}
+.top-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.bottom-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+}
+.bill {
+  text-align: center;
+}
+.bill .bill-table {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  width: 100%;
+}
+.bill .bill-table tr {
+  height: 20px;
+}
+.bill .bill-table tr th {
+  color: #111;
+  background-color: #fff;
+  border-bottom: 1px solid black;
+  border-right: 1px dotted black;
+}
+.bill .bill-table tr td {
+  text-align: center;
+  color: #222;
+  background-color: #fff;
+  border-right: 1px dotted black;
+}

@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block style_base %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/printbill.css" %}"> 
+    <link href="http://fonts.googleapis.com/css?family=Bitter|Open+Sans:300" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block wrapper_class %}body-wrapper testetet{% endblock %}
+{% block topbar %}{% endblock %}
+{% block body %}
+<div class="body-container">
+<div class="main-wrapper">
+	<div class="container-wrapper">
+		<div class="bill">
+			<img src="{% static "images/logo.png" %}" style="float:left;height:80px;width:80px;" />
+            <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
+            <div style="font-size:32px;">Sai Sri Prawn Purchasing Center</div>
+            <div >Gollavanthippa Road, Bhimavaram - 2</div>
+            <div style="margin-bottom:10px;">Cell: 9440273397</div>
+            <div style="margin-bottom:10px;font-size:18px;">Purchase Bill</div>
+            <div style="float:left;">Date:</div>
+			<div style="float:right;">Bill No:</div>
+            <br />
+			<div style="float:left; font-size:16px;">Agent Name:</div>
+            <div style="float:right; font-size:16px;">Place:</div>
+            <br />
+			<table id="billTable" class="bill-table">
+				<tr>
+					<th>S.No</th>
+					<th>Count</th>
+					<th>Quantity (kgs)</th>
+					<th>Rate</th>
+					<th>Rupees</th>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+                    <td style="border-top:1px solid black;"></td>
+                    <td style="border-top:1px solid black;"></td>
+                    <td style="border-top:1px solid black;">2500</td>
+                    <td style="border-top:1px solid black;"></td>
+                    <td style="border-top:1px solid black;">123456</td>
+                </tr>
+			</table>
+            <div style="float:left;">Amount in Words:</div>
+            <br /><br />
+            <div style="float:left;">Accountant:</div>
+            <div style="float:right">Manager:</div>
+            <div style="">Checked By:</div>
+		</div>
+	</div>
+</div>
+<div class="bottom-wrapper">
+	<div class="container-wrapper">
+		<div class="bill">
+			<img src="{% static "images/logo.png" %}" style="float:left;height:80px;width:80px;" />
+            <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
+            <div style="font-size:32px;">Sai Sri Prawn Purchasing Center</div>
+            <div >Gollavanthippa Road, Bhimavaram - 2</div>
+            <div style="margin-bottom:10px;">Cell: 9440273397</div>
+            <div style="margin-bottom:10px;font-size:18px;">Purchase Bill</div>
+            <div style="float:left;">Date:</div>
+			<div style="float:right;">Bill No:</div>
+            <br />
+			<div style="float:left; font-size:16px;">Agent Name:</div>
+            <div style="float:right; font-size:16px;">Place:</div>
+            <br />
+			<table id="billTable" class="bill-table">
+				<tr>
+					<th>S.No</th>
+					<th>Count</th>
+					<th>Quantity (kgs)</th>
+					<th>Rate</th>
+					<th>Rupees</th>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+					<td>1.</td>
+					<td style="font-weight:bold;font-family:arial">60 V</td>
+					<td>500</td>
+					<td>200</td>
+					<td>100000</td>
+				</tr>
+                <tr>
+                    <td style="border-top:1px solid black;"></td>
+                    <td style="border-top:1px solid black;"></td>
+                    <td style="border-top:1px solid black;">2500</td>
+                    <td style="border-top:1px solid black;"></td>
+                    <td style="border-top:1px solid black;">123456</td>
+                </tr>
+			</table>
+            <div style="float:left;">Amount in Words:</div>
+            <br /><br />
+            <div style="float:left;">Accountant:</div>
+            <div style="float:right">Manager:</div>
+            <div style="">Checked By:</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

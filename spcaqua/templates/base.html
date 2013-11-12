@@ -1,0 +1,53 @@
+{% load staticfiles %}
+{% load url from future %}
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>Welcome to SPC Aqua</title>
+        {% block viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+
+        {% block style_base %}
+            <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}"> 
+            <link href="http://fonts.googleapis.com/css?family=Bitter|Open+Sans:300" rel="stylesheet" type="text/css">
+            {% block extra_style %}{% endblock %}
+        {% endblock %}
+
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        <div class="{% block wrapper_class %}body-wrapper{% endblock %}">
+            {% block topbar_base %}
+                {% block topbar %}
+                    <div class="header-wrapper">
+                        <div class="container-wrapper">
+                            <a href="/">
+                                <div>Welcome to SPC Aqua</div>
+                            </a>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endblock %}
+
+            {% block body_base %}
+                {% block body %}
+                {% endblock %}
+                {% block footer_base %}
+                    {% block footer %}{% endblock %}
+                {% endblock %}
+            {% endblock %}
+        </div>
+
+        {% block script_base %}
+	    <script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+            {% block extra_script %}{% endblock %}
+        {% endblock %}
+
+        {% block extra_body_base %}
+            {% block extra_body %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>

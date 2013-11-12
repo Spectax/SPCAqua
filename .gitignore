@@ -3,6 +3,11 @@
 *.bak
 *.orig
 *~
-.project
-.pydevproject
+*.log
+*.pot
+*.pyc
 local_settings.py
+site_media
+cover
+.coverage
+.ropeproject
