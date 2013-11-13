@@ -9,6 +9,7 @@ class CompanyBillForm(forms.ModelForm):
         model = CompanyBill
         widgets = {
             "bill_no": forms.HiddenInput(),
+            "date": forms.HiddenInput(),
         }
 
 
@@ -25,6 +26,7 @@ class PurchaseBillForm(forms.ModelForm):
         model = PurchaseBill
         widgets = {
             "bill_no": forms.HiddenInput(),
+            "date": forms.HiddenInput(),
         }
 
 
