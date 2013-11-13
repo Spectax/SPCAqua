@@ -9,7 +9,6 @@ class CompanyBillForm(forms.ModelForm):
         model = CompanyBill
         widgets = {
             "bill_no": forms.HiddenInput(),
-            "total_price_words": forms.HiddenInput(),
         }
 
 
@@ -26,7 +25,6 @@ class PurchaseBillForm(forms.ModelForm):
         model = PurchaseBill
         widgets = {
             "bill_no": forms.HiddenInput(),
-            "total_price_words": forms.HiddenInput(),
         }
 
 

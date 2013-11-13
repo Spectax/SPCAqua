@@ -11,7 +11,6 @@ class Bill(models.Model):
 
     total_quantity = models.DecimalField("total quantity", max_digits=10, decimal_places=3, blank=False)
     total_price = models.DecimalField("total price", max_digits=10, decimal_places=3, blank=False)
-    total_price_words = models.CharField("total price in words", max_length=100, blank=True)
 
     class Meta:
         abstract = True
