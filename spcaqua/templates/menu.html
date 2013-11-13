@@ -9,17 +9,17 @@
 {% block body %}
 <div class="body-container">
     <div class="main-wrapper">
-	    <div class="container-wrapper">
-	    	<div class="card-white">
-			    <h1>Menu</h1>
-                <a href="{% url "purchasebill" %}" class="card-white card-mini">Add Purchase Bill</a>
-                <a href="{% url "companybill" %}" class="card-white card-mini">Add Company Bill</a>
+        <div class="container-wrapper">
+            <div class="card-white">
+                <h1>Menu</h1>
+                <a href="{% url "addpurchasebill" %}" class="card-white card-mini">Add Purchase Bill</a>
+                <a href="{% url "addcompanybill" %}" class="card-white card-mini">Add Company Bill</a>
                 <a href="#" class="card-white card-mini">Add Lot Invoice</a>
                 <a href="{% url "search" %}" class="card-white card-mini">View Purchase Bill</a>
                 <a href="{% url "search" %}" class="card-white card-mini">View Company Bill</a>
                 <a href="#" class="card-white card-mini">View Lot Invoice</a>
-		    </div>
-	    </div>
+            </div>
+        </div>
     </div>
 </div>
 

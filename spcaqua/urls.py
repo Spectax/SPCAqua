@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,8 +19,8 @@ urlpatterns = patterns('',
     url(r'^account/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^menu/$', 'spcaqua.views.menu', name='menu'),
     url(r'^search/$', 'spcaqua.views.search', name='search'),
-    url(r'^purchasebill/$', 'spcaqua.views.purchasebill', name='purchasebill'),
-    url(r'^companybill/$', 'spcaqua.views.companybill', name='companybill'),
-    url(r'^printpurchasebill/$', 'spcaqua.views.printpurchasebill', name='printpurchasebill'),
-    url(r'^printcompanybill/$', 'spcaqua.views.printcompanybill', name='printcompanybill'),
+    url(r'^addpurchasebill/$', 'spcaqua.views.add_purchase_bill', name='addpurchasebill'),
+    url(r'^addcompanybill/$', 'spcaqua.views.add_company_bill', name='addcompanybill'),
+    url(r'^printpurchasebill/$', 'spcaqua.views.print_purchase_bill', name='printpurchasebill'),
+    url(r'^printcompanybill/$', 'spcaqua.views.print_company_bill', name='printcompanybill'),
 )

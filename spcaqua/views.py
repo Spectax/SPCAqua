@@ -19,21 +19,21 @@ def search(request):
                               context_instance=RequestContext(request))
                               
 @login_required(login_url=reverse_lazy('login'))
-def purchasebill(request):
+def add_purchase_bill(request):
     return render_to_response('bill.html',
                               context_instance=RequestContext(request))
                               
 @login_required(login_url=reverse_lazy('login'))
-def companybill(request):
+def add_company_bill(request):
     return render_to_response('bill.html',
                               context_instance=RequestContext(request))
                               
 @login_required(login_url=reverse_lazy('login'))
-def printpurchasebill(request):
+def print_purchase_bill(request):
     return render_to_response('printbill.html',
                               context_instance=RequestContext(request))
                               
 @login_required(login_url=reverse_lazy('login'))
-def printcompanybill(request):
+def print_company_bill(request):
     return render_to_response('printbill.html',
                               context_instance=RequestContext(request))
