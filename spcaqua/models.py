@@ -1,6 +1,6 @@
 from django.db import models
 
-from utils import today
+from utils import today, purchase_bill_number, company_bill_number
 
 
 class Bill(models.Model):
@@ -14,36 +14,19 @@ class Bill(models.Model):
 
     class Meta:
         abstract = True
+    
+    def __unicode__(self):
+        return u'%s' % (self.bill_no)
 
 
 class PurchaseBill(Bill):
     
-    bill_no = models.CharField("purchase bill number", blank=False, unique=True, max_length=12)
-
-    def save(self, *args, **kwargs):
-        total_bills_today = PurchaseBill.objects.filter(date=today).count()
-        date_string = today().strftime("%d-%m-%y")
-        date = date_string.split("-")
-        day = date[0]
-        month = date[1]
-        year = date[2]
-        self.bill_no = str(total_bills_today + 1) + day + month + year + "P"
-        return super(PurchaseBill, self).save(*args, **kwargs)
+    bill_no = models.CharField("purchase bill number", blank=False, unique=True, default=purchase_bill_number, max_length=12)
 
 
 class CompanyBill(Bill):
 
-    bill_no = models.CharField("company bill number", blank=False, unique=True, max_length=12)
-
-    def save(self, *args, **kwargs):
-        total_bills_today = CompanyBill.objects.filter(date=today).count()
-        date_string = today().strftime("%d-%m-%y")
-        date = date_string.split("-")
-        day = date[0]
-        month = date[1]
-        year = date[2]
-        self.bill_no = str(total_bills_today + 1) + day + month + year + "C"
-        return super(CompanyBill, self).save(*args, **kwargs)
+    bill_no = models.CharField("company bill number", blank=False, unique=True, default=company_bill_number, max_length=12)
 
 
 class BillContent(models.Model):
