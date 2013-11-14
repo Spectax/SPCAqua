@@ -13,6 +13,20 @@
   color: #222;
   background-color: #fff;
 }
+.bill-table tr td input {
+  font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
+  width: 100%;
+  margin: 0px;
+  padding: 4px;
+  border: 0px;
+}
+.bill-info input {
+  font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
+  width: 100%;
+  margin: 0px;
+  padding: 4px;
+  border: 0px;
+}
 .bill-input {
   font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
   width: 100%;
