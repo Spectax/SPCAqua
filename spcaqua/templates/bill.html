@@ -35,8 +35,11 @@
                     <h2>Content</h2>
                     {{ bill_content_formset.management_form }}
                     {% for form in bill_content_formset.forms %}
-                        {{ form.as_p }}
-                        <hr>
+                    <div>
+                        {% for field in form %}
+                            <span class="{% if field.errors %}error{% endif %}">{{ field }}</span>
+                        {% endfor %}
+                    </div>
                     {% endfor %}
                     <button type="submit">Submit</button>
                 </form>
