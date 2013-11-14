@@ -11,7 +11,7 @@
 <div class="body-container">
     <div class="main-wrapper">
 	<div class="container-wrapper">
-            <div class="card-white">
+            <div class="card-black-transparent">
                 {% comment %}
                 <button class="bill-button" onclick="">Submit Bill</button>
                 <h3 style="float:left"><input id="" class="bill-input" type="text" placeholder="Name" /></h3>
@@ -31,13 +31,21 @@
                 {% endcomment %}
 				<div class="bill">
                 <form method="POST" action="{% if bill_type == "purchase" %}{% url "addpurchasebill" %}{% else %}{% url "addcompanybill" %}{% endif %}">
-                    {% csrf_token %}
+					{% csrf_token %}
+					<h2>Bill</h2>
 					<div class="bill-info">
                     {{ bill_form.as_p }}
 					</div>
-                    <h2>Bill</h2>
-					<table id="billTable" class="bill-table">
                     {{ bill_content_formset.management_form }}
+					<table id="billTable" class="bill-table">
+					<tr>
+                        <th>S.No</th>
+                        <th>Count</th>
+                        <th>Quantity (kgs)</th>
+                        <th>Rate</th>
+                        <th>Rupees</th>
+                        <th></th>
+                    </tr>
                     {% for form in bill_content_formset.forms %}
                     <tr>
                         {% for field in form %}
