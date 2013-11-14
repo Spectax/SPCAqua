@@ -13,7 +13,7 @@ class RequiredFormSet(BaseFormSet):
     def __init__(self, *args, **kwargs):
         super(RequiredFormSet, self).__init__(*args, **kwargs)
         for form in self.forms:
-            form.empty_permitted = False
+            form.empty_permitted = True
 
 
 def home(request):
