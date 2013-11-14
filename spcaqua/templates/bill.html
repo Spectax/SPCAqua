@@ -29,20 +29,25 @@
                 </table>
                 <button class="bill-button" onclick="addRow()">Add Row</button>
                 {% endcomment %}
+				<div class="bill">
                 <form method="POST" action="{% if bill_type == "purchase" %}{% url "addpurchasebill" %}{% else %}{% url "addcompanybill" %}{% endif %}">
                     {% csrf_token %}
+					<div class="bill-info">
                     {{ bill_form.as_p }}
-                    <h2>Content</h2>
+					</div>
+                    <h2>Bill</h2>
+					<table id="billTable" class="bill-table">
                     {{ bill_content_formset.management_form }}
                     {% for form in bill_content_formset.forms %}
-                    <div>
+                    <tr>
                         {% for field in form %}
-                            <span class="{% if field.errors %}error{% endif %}">{{ field }}</span>
+                            <td class="{% if field.errors %}error{% endif %}">{{ field }}</td>
                         {% endfor %}
-                    </div>
+                    </tr>
                     {% endfor %}
-                    <button type="submit">Submit</button>
+                    <button class="bill-button" type="submit">Submit</button>
                 </form>
+				</div>
             </div>
 	</div>
     </div>
