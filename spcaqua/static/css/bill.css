@@ -22,7 +22,6 @@
 }
 .bill-info input {
   font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
-  width: 100%;
   margin: 0px;
   padding: 4px;
   border: 0px;
@@ -36,15 +35,14 @@
 }
 .bill-button {
   font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
-  width: 100%;
-  margin: 0px;
-  padding: 4px;
+  margin: 5px;
+  padding: 10px 15px;
   border: 0px;
   color: #fff;
-  background-color: #ddd;
+  background-color: #40B93B;
 }
 .bill-button:hover {
   cursor: pointer;
-  background-color: #ccc;
+  background-color: #25EC2D;
   color: #fff;
 }
