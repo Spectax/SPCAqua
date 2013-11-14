@@ -7,6 +7,7 @@ class CompanyBillForm(forms.ModelForm):
 
     class Meta:
         model = CompanyBill
+        exclude = ("total_price", "total_quantity",)
         widgets = {
             "bill_no": forms.HiddenInput(),
             "date": forms.HiddenInput(),
@@ -24,13 +25,14 @@ class PurchaseBillForm(forms.ModelForm):
 
     class Meta:
         model = PurchaseBill
+        exclude = ("total_price", "total_quantity",)
         widgets = {
             "bill_no": forms.HiddenInput(),
             "date": forms.HiddenInput(),
         }
 
 
-class PurchaseBillContentFrom(forms.ModelForm):
+class PurchaseBillContentForm(forms.ModelForm):
 
     class Meta:
         model = PurchaseBillContent
