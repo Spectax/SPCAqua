@@ -12,9 +12,23 @@
 	    <div class="container-wrapper">
 	    	<div class="card-white">
 			    <h2>Date:</h2>
+				<p>
+					<form action="" method="POST">
+						<input type="text" name="date" id="id_date" />
+						<button type="submit" >Search</button>
+					</form>
+				</p>
 		    </div>
 	    </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_script %}
+<script>
+$(document).ready(function(){
+	$('#id_date').datepicker();
+});
+</script>
 {% endblock %}
