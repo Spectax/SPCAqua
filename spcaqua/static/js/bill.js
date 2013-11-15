@@ -79,3 +79,36 @@ function calculateRupees(tag)
 		document.getElementById(row+'4').value='';
 	//console.log('calculateRupees Called for '+tag);
 }
+
+
+$(document).ready(function(){
+	for(var i=0;i<5;i++)
+	{
+		bindKeyUp(i);
+	}
+});
+function bindKeyUp(num)
+{
+	var i = num;
+	$('#id_form-'+i+'-quantity,#id_form-'+i+'-rate').keyup(function(){
+		var qty=$('#id_form-'+i+'-quantity').val();
+		var rate=$('#id_form-'+i+'-rate').val();
+		var price = parseFloat(qty)*parseFloat(rate);
+		if(!isNaN(price))
+			$('#id_form-'+i+'-price').val(price);
+		else
+			$('#id_form-'+i+'-price').val('');
+	});
+}
+
+function validateBill()
+{
+	for(var i=0;i<5;i++)
+	{
+		var qty = $('#id_form-'+i+'-quantity').val();
+		if(qty!=='' && qty!==null && qty!==undefined)
+			return true;
+	}
+	alert('Empty bill not allowed! Enter atleast one Quantity')
+	return false;
+}
