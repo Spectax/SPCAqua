@@ -1,6 +1,13 @@
 from django import forms
 
-from spcaqua.models import CompanyBill, PurchaseBill, CompanyBillContent, PurchaseBillContent
+from spcaqua.models import (
+    CompanyBill,
+    PurchaseBill,
+    CompanyBillContent,
+    PurchaseBillContent,
+    Lot,
+    LotContent,
+)
 
 
 class CompanyBillForm(forms.ModelForm):
@@ -37,3 +44,21 @@ class PurchaseBillContentForm(forms.ModelForm):
     class Meta:
         model = PurchaseBillContent
         exclude = ("purchase_bill",)
+
+
+class LotForm(forms.ModelForm):
+
+    class Mera:
+        model = Lot
+        exclude= ("total_quantity",)
+        widgets = {
+            "lot_no": forms.HiddenInput(),
+            "date": forms.HiddenInput(),
+        }
+
+
+class LotContentForm(forms.ModelForm):
+
+    class Meta:
+        model = LotContent
+        exclude = ("lot",)

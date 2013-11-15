@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^search/$', 'spcaqua.views.search', name='search'),
     url(r'^addpurchasebill/$', 'spcaqua.views.add_purchase_bill', name='addpurchasebill'),
     url(r'^addcompanybill/$', 'spcaqua.views.add_company_bill', name='addcompanybill'),
+    url(r'^addlot/$', 'spcaqua.views.add_lot', name='addlot'),
     url(r'^printpurchasebill/$', 'spcaqua.views.print_purchase_bill', name='printpurchasebill'),
     url(r'^printcompanybill/$', 'spcaqua.views.print_company_bill', name='printcompanybill'),
 )

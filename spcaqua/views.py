@@ -81,8 +81,8 @@ def add_company_bill(request):
                 total_quantity += form.cleaned_data["quantity"]
                 total_price += form.cleaned_data["price"]
             company_bill = company_bill_form.save(commit=False)
-            company_bill.total_quantity = company_quantity
-            company_bill.total_price = company_price
+            company_bill.total_quantity = total_quantity
+            company_bill.total_price = total_price
             company_bill.save()
             for form in company_bill_content_formset.forms:
                 company_bill_content = form.save(commit=False)
@@ -109,3 +109,34 @@ def print_purchase_bill(request):
 def print_company_bill(request):
     return render_to_response('printbill.html',
                               context_instance=RequestContext(request))
+
+@login_required(login_url=reverse_lazy('login'))
+def add_lot(request):
+
+    LotContentFormSet = formset_factory(LotContentForm, max_num=10, extra=10, formset=RequiredFormSet)
+
+    if request.method == 'POST':
+        lot_form = LotForm(request.POST)
+        lot_content_formset = LotContentFormSet(request.POST)
+
+        if lot_content_formset.is_valid() and lot_form.is_valid():
+            total_quantity = 0
+            for form in lot_content_formset.forms:
+                total_quantity += form.cleaned_data["quantity"]
+            lot = lot_form.save(commit=False)
+            lot.total_quantity = total_quantity
+            lot.save()
+            for form in lot_content_formset.forms:
+                lot_content = form.save(commit=False)
+                lot_content.lot = lot
+                lot_content.save()
+            return redirect("menu")
+    else:
+        lot_form = LotForm()
+        lot_content_formset = LotContentFormSet()
+
+    ctx = {"lot_form": lot_form,
+           "lot_content_formset": lot_content_formset,}
+    ctx.update(csrf(request))
+
+    return render_to_response('lot.html', ctx)
