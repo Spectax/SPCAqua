@@ -8,6 +8,7 @@ from spcaqua.models import (
     Lot,
     LotContent,
 )
+from utils import today
 
 
 class CompanyBillForm(forms.ModelForm):
@@ -62,3 +63,8 @@ class LotContentForm(forms.ModelForm):
     class Meta:
         model = LotContent
         exclude = ("lot",)
+
+
+class SearchForm(forms.Form):
+
+    date = forms.DateField(initial=today, widget=forms.DateInput(format="%d/%m/%Y"), input_formats=("%d/%m/%Y",))
