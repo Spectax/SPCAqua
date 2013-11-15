@@ -109,6 +109,6 @@ function validateBill()
 		if(qty!=='' && qty!==null && qty!==undefined)
 			return true;
 	}
-	alert('Empty bill not allowed! Enter atleast one Quantity')
+	alert('Empty bill not allowed! Enter atleast one Quantity');
 	return false;
 }
