@@ -5,7 +5,14 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
 from django.forms.formsets import formset_factory, BaseFormSet
-from spcaqua.forms import PurchaseBillForm, PurchaseBillContentForm, CompanyBillForm, CompanyBillContentForm
+from spcaqua.forms import (
+    PurchaseBillForm,
+    PurchaseBillContentForm,
+    CompanyBillForm,
+    CompanyBillContentForm,
+    LotForm,
+    LotContentForm,
+)
 
 
 

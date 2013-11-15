@@ -48,7 +48,7 @@ class PurchaseBillContentForm(forms.ModelForm):
 
 class LotForm(forms.ModelForm):
 
-    class Mera:
+    class Meta:
         model = Lot
         exclude= ("total_quantity",)
         widgets = {
