@@ -38,6 +38,7 @@
 .bill-info .bill-info-part {
   display: inline-block;
   width: 450px;
+  margin-bottom: 3px;
   text-align: left;
 }
 .bill-info .bill-info-part .label {
