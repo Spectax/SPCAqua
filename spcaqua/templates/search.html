@@ -14,7 +14,7 @@
 			    <h2>Date:</h2>
 				<p>
 					<form action="" method="POST">
-						<input type="text" name="date" id="id_date" />
+                                                {{ form.date }}
 						<button type="submit" >Search</button>
 					</form>
 				</p>
@@ -23,11 +23,13 @@
     </div>
 </div>
 
+
 {% endblock %}
 
 {% block extra_script %}
 <script>
 $(document).ready(function(){
+        $.datepicker.setDefaults({ dateFormat: 'dd/mm/yy' });
 	$('#id_date').datepicker();
 });
 </script>
