@@ -11,10 +11,7 @@ body {
   width: 100%;
 }
 .bottom-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
+  display: none;
 }
 .bill {
   text-align: center;
@@ -40,4 +37,16 @@ body {
   color: #222;
   background-color: #fff;
   border-right: 1px dotted black;
+}
+@media print {
+  .bottom-wrapper {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+  }
+  .print-button {
+    display: none;
+  }
 }

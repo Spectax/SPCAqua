@@ -16,11 +16,7 @@ body
 
 .bottom-wrapper
 {
-	position:absolute;
-	//bottom:0;
-	top:50%;
-	left:0;
-	width:100%;
+	display:none;
 }
 
 .bill
@@ -56,5 +52,23 @@ body
 				border-right:1px dotted black;
 			}
 		}
+	}
+}
+
+@media print
+{
+	.bottom-wrapper
+	{
+		display:block;
+		position:absolute;
+		//bottom:0;
+		top:50%;
+		left:0;
+		width:100%;
+	}
+	
+	.print-button
+	{
+		display:none;
 	}
 }
