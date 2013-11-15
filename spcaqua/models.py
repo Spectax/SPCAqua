@@ -65,6 +65,9 @@ class Lot(models.Model):
 
     driver_name = models.CharField("driver name", blank=False, max_length=50)
     driver_phone = models.CharField("driver phone number", blank=False, max_length=12)
+    
+    def __unicode__(self):
+        return u'%s' % (self.lot_no)
 
 
 class LotContent(models.Model):

@@ -50,16 +50,18 @@ def add_purchase_bill(request):
             total_quantity = 0
             total_price = 0
             for form in purchase_bill_content_formset.forms:
-                total_quantity += form.cleaned_data["quantity"]
-                total_price += form.cleaned_data["price"]
+                if form.cleaned_data.get("quantity"):
+                    total_quantity += form.cleaned_data.get("quantity")
+                    total_price += form.cleaned_data.get("price")
             purchase_bill = purchase_bill_form.save(commit=False)
             purchase_bill.total_quantity = total_quantity
             purchase_bill.total_price = total_price
             purchase_bill.save()
             for form in purchase_bill_content_formset.forms:
-                purchase_bill_content = form.save(commit=False)
-                purchase_bill_content.purchase_bill = purchase_bill
-                purchase_bill_content.save()
+                if form.cleaned_data.get("quantity"):
+                    purchase_bill_content = form.save(commit=False)
+                    purchase_bill_content.purchase_bill = purchase_bill
+                    purchase_bill_content.save()
             return redirect("menu")
     else:
         purchase_bill_form = PurchaseBillForm()
@@ -85,16 +87,18 @@ def add_company_bill(request):
             total_quantity = 0
             total_price = 0
             for form in company_bill_content_formset.forms:
-                total_quantity += form.cleaned_data["quantity"]
-                total_price += form.cleaned_data["price"]
+                if form.cleaned_data.get("quantity"):
+                    total_quantity += form.cleaned_data.get("quantity")
+                    total_price += form.cleaned_data.get("price")
             company_bill = company_bill_form.save(commit=False)
             company_bill.total_quantity = total_quantity
             company_bill.total_price = total_price
             company_bill.save()
             for form in company_bill_content_formset.forms:
-                company_bill_content = form.save(commit=False)
-                company_bill_content.company_bill = company_bill
-                company_bill_content.save()
+                if form.cleaned_data.get("quantity"):
+                    company_bill_content = form.save(commit=False)
+                    company_bill_content.company_bill = company_bill
+                    company_bill_content.save()
             return redirect("menu")
     else:
         company_bill_form = CompanyBillForm()
@@ -129,14 +133,16 @@ def add_lot(request):
         if lot_content_formset.is_valid() and lot_form.is_valid():
             total_quantity = 0
             for form in lot_content_formset.forms:
-                total_quantity += form.cleaned_data["quantity"]
+                if form.cleaned_data.get("quantity"):
+                    total_quantity += form.cleaned_data.get("quantity")
             lot = lot_form.save(commit=False)
             lot.total_quantity = total_quantity
             lot.save()
             for form in lot_content_formset.forms:
-                lot_content = form.save(commit=False)
-                lot_content.lot = lot
-                lot_content.save()
+                if form.cleaned_data.get("quantity"):
+                    lot_content = form.save(commit=False)
+                    lot_content.lot = lot
+                    lot_content.save()
             return redirect("menu")
     else:
         lot_form = LotForm()
