@@ -12,6 +12,7 @@ from spcaqua.forms import (
     CompanyBillContentForm,
     LotForm,
     LotContentForm,
+    SearchForm,
 )
 
 
@@ -34,8 +35,10 @@ def menu(request):
                               
 @login_required(login_url=reverse_lazy('login'))
 def search(request):
-    return render_to_response('search.html',
-                              context_instance=RequestContext(request))
+    form = SearchForm()
+    ctx = {"form": form}
+    ctx.update(csrf(request))
+    return render_to_response('search.html', ctx)
                               
 @login_required(login_url=reverse_lazy('login'))
 def add_purchase_bill(request):

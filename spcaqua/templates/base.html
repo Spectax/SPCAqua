@@ -9,6 +9,7 @@
         {% endblock %}
 
         {% block style_base %}
+            <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui-1.10.3.custom.css" %}">
             <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}"> 
             <link href="http://fonts.googleapis.com/css?family=Bitter|Open+Sans:300" rel="stylesheet" type="text/css">
             {% block extra_style %}{% endblock %}
@@ -43,7 +44,7 @@
 
         {% block script_base %}
         <script src="{% static "js/jquery-1.9.1.min.js" %}"></script>
-        <script src="{% static "js/jquery-ui.min.js" %}"></script>
+        <script src="{% static "js/jquery-ui-1.10.3.custom.min.js" %}"></script>
             {% block extra_script %}{% endblock %}
         {% endblock %}
 
