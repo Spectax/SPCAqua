@@ -33,7 +33,13 @@
 			{% csrf_token %}
 			<h2>Bill</h2>
 			<div class="bill-info">
-                            {{ lot_form.as_p }}
+                            {% for field in lot_form.hidden_fields %}
+                                {{ field }}
+                            {% endfor %}
+                            {% for field in lot_form.visible_fields %}
+                                {{ field.label }}
+                                {{ field }}
+                            {% endfor %}
 			</div>
                         {{ lot_content_formset.management_form }}
 			<table id="billTable" class="bill-table">
