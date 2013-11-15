@@ -29,7 +29,7 @@
                 <button class="bill-button" onclick="addRow()">Add Row</button>
                 {% endcomment %}
 		<div class="bill">
-                    <form method="POST" action="{% url "addlot" %}">
+                    <form method="POST" onsubmit="return validateBill();" action="{% url "addlot" %}">
 			{% csrf_token %}
 			<h2>Lot Invoice</h2>
 			<div class="bill-info">
