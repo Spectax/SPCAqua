@@ -26,6 +26,9 @@
 .bill-table tr .error {
   border: 3px solid red;
 }
+.bill-info {
+  margin-bottom: 20px;
+}
 .bill-info input {
   font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
   margin: 0px;
@@ -34,7 +37,7 @@
 }
 .bill-info .bill-info-part {
   display: inline-block;
-  width: 300px;
+  width: 450px;
   text-align: left;
 }
 .bill-info .bill-info-part .label {
@@ -42,8 +45,11 @@
   display: inline-block;
 }
 .bill-info .bill-info-part .input {
-  width: 140px;
+  width: 280px;
   display: inline-block;
+}
+.bill-info .bill-info-part .input input {
+  width: 95%;
 }
 .bill-input {
   font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
