@@ -42,7 +42,8 @@
         </div>
 
         {% block script_base %}
-	    <script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="{% static "js/jquery-1.9.1.min.js" %}"></script>
+        <script src="{% static "js/jquery-ui.min.js" %}"></script>
             {% block extra_script %}{% endblock %}
         {% endblock %}
 
