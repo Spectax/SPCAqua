@@ -1,6 +1,6 @@
 from django.db import models
 
-from utils import today, purchase_bill_number, company_bill_number
+from utils import today, purchase_bill_number, company_bill_number, lot_number
 
 
 class Bill(models.Model):
@@ -49,3 +49,28 @@ class PurchaseBillContent(BillContent):
 class CompanyBillContent(BillContent):
 
     company_bill = models.ForeignKey(CompanyBill)
+
+
+class Lot(models.Model):
+
+    lot_no = models.CharField("Lot No", blank=False, unique=True, default=lot_number, max_length=12)
+    date = models.DateField("lot date", default=today, db_index=True, blank=False)
+    company_name = models.CharField("company name", blank=False, max_length=50)
+    company_address = models.CharField("company address", blank=False, max_length=50)
+
+    total_quantity = models.DecimalField("total quantity", max_digits=15, decimal_places=3, blank=False)
+
+    vehicle_number = models.CharField("vehicle number", blank=False, max_length=15)
+    seal_number = models.CharField("seal number", blank=False, max_length=15)
+
+    driver_name = models.CharField("driver name", blank=False, max_length=50)
+    driver_phone = models.CharField("driver phone number", blank=False, max_length=12)
+
+
+class LotContent(models.Model):
+
+    s_no = models.CharField("S.No.", blank=False, max_length=3)
+    count = models.CharField("Count", blank=False, max_length=8)
+    quantity = models.DecimalField("Quantity", blank=False, max_digits=10, decimal_places=3)
+    no_of_boxes_with_identifier = models.CharField("Number of boxes with identifier", blank=False, max_length=10)
+    lot = models.ForeignKey(Lot)
