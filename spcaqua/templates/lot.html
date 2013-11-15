@@ -31,14 +31,16 @@
 		<div class="bill">
                     <form method="POST" action="{% url "addlot" %}">
 			{% csrf_token %}
-			<h2>Bill</h2>
+			<h2>Lot Invoice</h2>
 			<div class="bill-info">
                             {% for field in lot_form.hidden_fields %}
                                 {{ field }}
                             {% endfor %}
                             {% for field in lot_form.visible_fields %}
-                                {{ field.label }}
-                                {{ field }}
+                            <div class="bill-info-part">
+								<span class="label">{{ field.label }}</span>
+                                <span class="input">{{ field }}</span>
+							</div>
                             {% endfor %}
 			</div>
                         {{ lot_content_formset.management_form }}

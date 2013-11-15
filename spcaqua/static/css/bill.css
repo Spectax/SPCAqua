@@ -32,6 +32,19 @@
   padding: 4px;
   border: 0px;
 }
+.bill-info .bill-info-part {
+  display: inline-block;
+  width: 300px;
+  text-align: left;
+}
+.bill-info .bill-info-part .label {
+  width: 159px;
+  display: inline-block;
+}
+.bill-info .bill-info-part .input {
+  width: 140px;
+  display: inline-block;
+}
 .bill-input {
   font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
   width: 100%;
