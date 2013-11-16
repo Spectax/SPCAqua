@@ -20,17 +20,17 @@
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
             <div style="margin-bottom:10px;">Cell: 9440273397</div>
             <div style="margin-bottom:10px;font-size:18px;">Lot Invoice</div>
-            <div style="float:left;">Date:</div>
-			<div style="float:right;">Bill No:</div>
+            <div style="float:left;">Date: {{ lot.date }}</div>
+			<div style="float:right;">Bill No: {{ lot.lot_no }}</div>
             <br />
-			<div style="float:left; font-size:16px;">Company Name:</div>
-            <div style="float:right; font-size:16px;">Company Place:</div>
+			<div style="float:left; font-size:16px;">Company Name: {{ lot.company_name }}</div>
+            <div style="float:right; font-size:16px;">Company Place: {{ lot.company_address }}</div>
             <br />
-			<div style="float:left; font-size:16px;">Vehicle Number:</div>
-            <div style="float:right; font-size:16px;">Serial Number:</div>
+			<div style="float:left; font-size:16px;">Vehicle Number: {{ lot.vehicle_number }}</div>
+            <div style="float:right; font-size:16px;">Seal Number: {{ lot.seal_number }}</div>
             <br />
-			<div style="float:left; font-size:16px;">Driver Name:</div>
-            <div style="float:right; font-size:16px;">Driver Phone Number:</div>
+			<div style="float:left; font-size:16px;">Driver Name: {{ lot.driver_name }}</div>
+            <div style="float:right; font-size:16px;">Driver Phone Number: {{ lot.driver_phone }}</div>
             <br />
 			<table id="billTable" class="bill-table">
 				<tr>
@@ -39,44 +39,19 @@
 					<th>Quantity (kgs)</th>
 					<th>Number of Boxes</th>
 				</tr>
+                {% for row in lot_content %}
 				<tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
+					<td>{{ row.s_no }}</td>
+					<td style="font-weight:bold;font-family:arial">{{ row.count }}</td>
+					<td>{{ row.quantity }}</td>
+					<td style="font-weight:bold;font-family:arial">{{ row.no_of_boxes_with_identifier }}</td>
 				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-
-				</tr>
+                {% endfor %}
                 <tr>
                     <td style="border-top:1px solid black;"></td>
                     <td style="border-top:1px solid black;"></td>
-                    <td style="border-top:1px solid black;">2500</td>
-                    <td style="border-top:1px solid black;">123456</td>
+                    <td style="border-top:1px solid black;font-weight:bold;font-family:arial">{{ lot.total_quantity }}</td>
+                    <td style="border-top:1px solid black;"></td>
                 </tr>
 			</table>
             <br /><br />
