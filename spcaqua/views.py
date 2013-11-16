@@ -165,7 +165,7 @@ def add_ice_bill(request):
         if ice_bill_content_formset.is_valid() and ice_bill_form.is_valid():
             ice_bill = ice_bill_form.save()
             for form in ice_bill_content_formset.forms:
-                if form.cleaned_data.get("quantity"):
+                if form.cleaned_data.get("no_of_cans"):
                     ice_bill_content = form.save(commit=False)
                     ice_bill_content.ice_bill = ice_bill
                     ice_bill_content.save()
