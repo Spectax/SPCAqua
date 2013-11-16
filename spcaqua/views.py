@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render_to_response, redirect, get_list_or_404
+from django.shortcuts import render_to_response, redirect, get_list_or_404, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
@@ -111,16 +111,6 @@ def add_company_bill(request):
     ctx.update(csrf(request))
 
     return render_to_response('bill.html', ctx)
-                              
-@login_required(login_url=reverse_lazy('login'))
-def print_purchase_bill(request):
-    return render_to_response('printbill.html',
-                              context_instance=RequestContext(request))
-                              
-@login_required(login_url=reverse_lazy('login'))
-def print_company_bill(request):
-    return render_to_response('printbill.html',
-                              context_instance=RequestContext(request))
 
 @login_required(login_url=reverse_lazy('login'))
 def add_lot(request):
@@ -206,3 +196,27 @@ def search_lot(request):
     ctx = {"form": form}
     ctx.update(csrf(request))
     return render_to_response('search.html', ctx)
+
+@login_required(login_url=reverse_lazy('login'))
+def print_purchase_bill(request, bill_no):
+    bill = get_object_or_404(PurchaseBill, bill_no=bill_no)
+    bill_content = get_list_or_404(PurchaseBillContent, purchase_bill=bill)
+    ctx = {"bill": bill,
+           "bill_content": bill_content}
+    return render_to_response('printbill.html', ctx)
+
+@login_required(login_url=reverse_lazy('login'))
+def print_company_bill(request, bill_no):
+    bill = get_object_or_404(CompanyBill, bill_no=bill_no)
+    bill_content = get_list_or_404(CompanyBillContent, company_bill=bill)
+    ctx = {"bill": bill,
+           "bill_content": bill_content}
+    return render_to_response('printbill.html', ctx)
+
+@login_required(login_url=reverse_lazy('login'))
+def print_lot(request, lot_no):
+    lot = get_object_or_404(Lot, lot_no=lot_no)
+    lot_content = get_list_or_404(LotContent, lot=lot)
+    ctx = {"lot": lot,
+           "lot_content": lot_content}
+    return render_to_response('printlot.html', ctx)
