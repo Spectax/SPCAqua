@@ -1,0 +1,20 @@
+.list-table {
+  border: 1px solid black;
+  width: 100%;
+}
+.list-table tr {
+  height: 30px;
+}
+.list-table tr th {
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+.list-table tr td {
+  border-bottom: 1px dotted black;
+}
+.list-table tr:nth-child(even) {
+  background: #EEE;
+}
+.list-table tr:nth-child(odd) {
+  background: #FFF;
+}
