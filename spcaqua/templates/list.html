@@ -2,6 +2,10 @@
 {% load url from future %}
 {% load staticfiles %}
 
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static "css/list.css" %}"> 
+{% endblock %}
+
 {% block body %}
 <div class="body-container">
     <div class="main-wrapper">
@@ -9,7 +13,7 @@
             <div class="card-white">
                 {% if type == "lot" %}
                     <h1>Lot Invoices</h1>
-                    <table>
+                    <table class="list-table">
                         <tr>
                             <th>Date</th>
                             <th>Lot Number</th>
@@ -29,7 +33,7 @@
                     </table>
                 {% else %}
                     <h1>{% if type == "purchase_bill" %}Purchase Bills{% else %}Company Bills{% endif %}</h1>
-                    <table>
+                    <table class="list-table">
                         <tr>
                             <th>Date</th>
                             <th>Bill Number</th>
