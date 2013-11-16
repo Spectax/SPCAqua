@@ -14,6 +14,7 @@
 			    <h2>Date:</h2>
 				<p>
 					<form action="" method="POST">
+                                            {% csrf_token %}
                                                 {{ form.date }}
 						<button type="submit" >Search</button>
 					</form>

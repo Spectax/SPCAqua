@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, redirect, get_list_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
@@ -13,6 +13,11 @@ from spcaqua.forms import (
     LotForm,
     LotContentForm,
     SearchForm,
+)
+from spcaqua.models import (
+    PurchaseBill,
+    CompanyBill,
+    Lot,
 )
 
 
@@ -32,13 +37,6 @@ def home(request):
 def menu(request):
     return render_to_response('menu.html',
                               context_instance=RequestContext(request))
-                              
-@login_required(login_url=reverse_lazy('login'))
-def search(request):
-    form = SearchForm()
-    ctx = {"form": form}
-    ctx.update(csrf(request))
-    return render_to_response('search.html', ctx)
                               
 @login_required(login_url=reverse_lazy('login'))
 def add_purchase_bill(request):
@@ -156,3 +154,55 @@ def add_lot(request):
     ctx.update(csrf(request))
 
     return render_to_response('lot.html', ctx)
+
+
+@login_required(login_url=reverse_lazy('login'))
+def search_company_bill(request):
+    
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data["date"]
+            bills = get_list_or_404(CompanyBill, date=date)
+            ctx = {"bills": bills,
+                   "type": "company_bill"}
+            return render_to_response("list.html", ctx)
+    else:
+        form = SearchForm()
+    ctx = {"form": form}
+    ctx.update(csrf(request))
+    return render_to_response('search.html', ctx)
+
+
+@login_required(login_url=reverse_lazy('login'))
+def search_purchase_bill(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data["date"]
+            bills = get_list_or_404(PurchaseBill, date=date)
+            ctx = {"bills": bills,
+                   "type": "purchase_bill"}
+            return render_to_response("list.html", ctx)
+    else:
+        form = SearchForm()
+    ctx = {"form": form}
+    ctx.update(csrf(request))
+    return render_to_response('search.html', ctx)
+
+
+@login_required(login_url=reverse_lazy('login'))
+def search_lot(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data["date"]
+            lots = get_list_or_404(Lot, date=date)
+            ctx = {"lots": lots,
+                   "type": "lot"}
+            return render_to_response("list.html", ctx)
+    else:
+        form = SearchForm()
+    ctx = {"form": form}
+    ctx.update(csrf(request))
+    return render_to_response('search.html', ctx)
