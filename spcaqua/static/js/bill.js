@@ -91,11 +91,13 @@ function bindKeyUp(num)
 {
 	var i = num;
 	$('#id_form-'+i+'-quantity,#id_form-'+i+'-rate').keyup(function(){
-		var qty=$('#id_form-'+i+'-quantity').val();
-		var rate=$('#id_form-'+i+'-rate').val();
+		var qty=Number(parseFloat($('#id_form-'+i+'-quantity').val()).toFixed(3));
+		var rate=Number(parseFloat($('#id_form-'+i+'-rate').val()).toFixed(3));
+		$('#id_form-'+i+'-quantity').val(qty);
+		$('#id_form-'+i+'-rate').val(rate);
 		var price = parseFloat(qty)*parseFloat(rate);
 		if(!isNaN(price))
-			$('#id_form-'+i+'-price').val(price);
+			$('#id_form-'+i+'-price').val(Number((price).toFixed(3)));
 		else
 			$('#id_form-'+i+'-price').val('');
 	});
