@@ -87,6 +87,7 @@
         <div class="menu-item" onclick="scrollPage('leadership')"><div class="card-white">Leadership</div></div>
         <div class="menu-item" onclick="scrollPage('products')"><div class="card-white">Products</div></div>
         <div class="menu-item" onclick="scrollPage('contact')"><div class="card-white">Contact Us</div></div>
+        {% if user.is_authenticated %}<a href="{% url "menu" %}"><div class="card-white">Menu</div></a>{% endif %}
         <a href="{% if user.is_authenticated %}{% url "logout" %}{% else %}{% url "login" %}{% endif %}"><div class="card-white">{% if user.is_authenticated %}logout{% else %}login{% endif %}</div></a>
     </div>
 </div>
