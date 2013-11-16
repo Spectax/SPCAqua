@@ -12,6 +12,8 @@ from spcaqua.forms import (
     CompanyBillContentForm,
     LotForm,
     LotContentForm,
+    IceBillForm,
+    IceBillContentForm,
     SearchForm,
 )
 from spcaqua.models import (
@@ -21,6 +23,8 @@ from spcaqua.models import (
     CompanyBillContent,
     Lot,
     LotContent,
+    IceBill,
+    IceBillContent,
 )
 
 
@@ -150,6 +154,34 @@ def add_lot(request):
 
 
 @login_required(login_url=reverse_lazy('login'))
+def add_ice_bill(request):
+
+    IceBillContentFormSet = formset_factory(IceBillContentForm, max_num=5, extra=5, formset=RequiredFormSet)
+
+    if request.method == 'POST':
+        ice_bill_form = IceBillForm(request.POST)
+        ice_bill_content_formset = IceBillContentFormSet(request.POST)
+
+        if ice_bill_content_formset.is_valid() and ice_bill_form.is_valid():
+            ice_bill = ice_bill_form.save()
+            for form in ice_bill_content_formset.forms:
+                if form.cleaned_data.get("quantity"):
+                    ice_bill_content = form.save(commit=False)
+                    ice_bill_content.ice_bill = ice_bill
+                    ice_bill_content.save()
+            return redirect("menu")
+    else:
+        ice_bill_form = IceBillForm()
+        ice_bill_content_formset = IceBillContentFormSet()
+
+    ctx = {"bill_form": ice_bill_form,
+           "bill_content_formset": ice_bill_content_formset,}
+    ctx.update(csrf(request))
+
+    return render_to_response('icebill.html', ctx)
+
+
+@login_required(login_url=reverse_lazy('login'))
 def search_company_bill(request):
     
     if request.method == 'POST':
@@ -200,6 +232,25 @@ def search_lot(request):
     ctx.update(csrf(request))
     return render_to_response('search.html', ctx)
 
+
+@login_required(login_url=reverse_lazy('login'))
+def search_ice_bill(request):
+    
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            date = form.cleaned_data["date"]
+            bills = get_list_or_404(IceBill, date=date)
+            ctx = {"bills": bills,
+                   "type": "ice_bill"}
+            return render_to_response("list.html", ctx)
+    else:
+        form = SearchForm()
+    ctx = {"form": form}
+    ctx.update(csrf(request))
+    return render_to_response('search.html', ctx)
+
+
 @login_required(login_url=reverse_lazy('login'))
 def print_purchase_bill(request, bill_no):
     bill = get_object_or_404(PurchaseBill, bill_no=bill_no)
@@ -207,6 +258,7 @@ def print_purchase_bill(request, bill_no):
     ctx = {"bill": bill,
            "bill_content": bill_content}
     return render_to_response('printbill.html', ctx)
+
 
 @login_required(login_url=reverse_lazy('login'))
 def print_company_bill(request, bill_no):
@@ -216,6 +268,7 @@ def print_company_bill(request, bill_no):
            "bill_content": bill_content}
     return render_to_response('printbill.html', ctx)
 
+
 @login_required(login_url=reverse_lazy('login'))
 def print_lot(request, lot_no):
     lot = get_object_or_404(Lot, lot_no=lot_no)
@@ -223,3 +276,12 @@ def print_lot(request, lot_no):
     ctx = {"lot": lot,
            "lot_content": lot_content}
     return render_to_response('printlot.html', ctx)
+
+
+@login_required(login_url=reverse_lazy('login'))
+def print_ice_bill(request, bill_no):
+    bill = get_object_or_404(IceBill, bill_no=bill_no)
+    bill_content = get_list_or_404(IceBillContent, ice_bill=bill)
+    ctx = {"bill": bill,
+           "bill_content": bill_content}
+    return render_to_response('printicebill.html', ctx)

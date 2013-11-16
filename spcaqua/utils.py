@@ -38,3 +38,14 @@ def lot_number():
     year = date[2]
     lot_no = str(total_lots_today + 1) + day + month + year + "L"
     return lot_no
+
+    
+def ice_bill_number():
+    total_bills_today = spcaqua.models.IceBill.objects.filter(date=today).count()
+    date_string = today().strftime("%d-%m-%y")
+    date = date_string.split("-")
+    day = date[0]
+    month = date[1]
+    year = date[2]
+    bill_no = str(total_bills_today + 1) + day + month + year + "I"
+    return bill_no

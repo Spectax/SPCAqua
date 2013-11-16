@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block style_base %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/printbill.css" %}"> 
+    <link href="http://fonts.googleapis.com/css?family=Bitter|Open+Sans:300" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block wrapper_class %}body-wrapper{% endblock %}
+{% block topbar %}{% endblock %}
+{% block body %}
+<div class="body-container">
+<div class="main-wrapper">
+	<div class="container-wrapper">
+		<div class="bill">
+			<img src="{% static "images/logo.png" %}" style="float:left;height:80px;width:80px;" />
+            <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
+            <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
+            <div >Gollavanthippa Road, Bhimavaram - 2</div>
+            <div style="margin-bottom:10px;">Cell: 9440273397</div>
+            <div style="margin-bottom:10px;font-size:18px;">Ice Bill</div>
+            <div style="float:left;">Date: {{ bill.date }}</div>
+			<div style="float:right;">Bill No: {{ bill.bill_no }}</div>
+            <br />
+			<div style="float:left; font-size:16px;">Company Name: {{ bill.company_name }}</div>
+            <div style="float:right; font-size:16px;">Company Place: {{ bill.company_address }}</div>
+            <br />
+			<table id="billTable" class="bill-table">
+				<tr>
+					<th>S.No</th>
+					<th>No. of Cans</th>
+					<th>Rate</th>
+					<th>Price</th>
+				</tr>
+                {% for row in bill_content %}
+				<tr>
+					<td>{{ row.s_no }}</td>
+					<td style="font-weight:bold;font-family:arial">{{ row.no_of_cans }}</td>
+					<td>{{ row.rate }}</td>
+					<td style="font-weight:bold;font-family:arial">{{ row.price }}</td>
+				</tr>
+                {% endfor %}
+			</table>
+            <br /><br />
+            <div style="float:left;"></div>
+            <div style="float:right">Signature</div>
+            <div style="">&nbsp;</div>
+		</div>
+		<button class="print-button" onclick="window.print()">Print Ice Bill</button>
+	</div>
+</div>
+
+</div>
+{% endblock %}

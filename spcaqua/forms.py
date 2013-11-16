@@ -7,6 +7,8 @@ from spcaqua.models import (
     PurchaseBillContent,
     Lot,
     LotContent,
+    IceBill,
+    IceBillContent,
 )
 from utils import today
 
@@ -63,6 +65,23 @@ class LotContentForm(forms.ModelForm):
     class Meta:
         model = LotContent
         exclude = ("lot",)
+
+
+class IceBillForm(forms.ModelForm):
+
+    class Meta:
+        model = IceBill
+        widgets = {
+            "bill_no": forms.HiddenInput(),
+            "date": forms.HiddenInput(),
+        }
+
+
+class IceBillContentForm(forms.ModelForm):
+
+    class Meta:
+        model = IceBillContent
+        exclude = ("ice_bill",)
 
 
 class SearchForm(forms.Form):

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load url from future %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static "css/bill.css" %}"> 
+{% endblock %}
+
+{% block wrapper_class %}body-wrapper{% endblock %}
+{% block body %}
+<div class="body-container">
+    <div class="main-wrapper">
+	<div class="container-wrapper">
+        <div class="card-black-transparent bill-card">
+            <div class="bill">
+                    <form method="POST" onsubmit="return validateBill();" action="{% url "addicebill" %}">
+			{% csrf_token %}
+			<h2>Ice Bill</h2>
+			<div class="bill-info">
+                            {% for field in bill_form.hidden_fields %}
+                                {{ field }}
+                            {% endfor %}
+                            {% for field in bill_form.visible_fields %}
+                            <div class="bill-info-part">
+								<span class="label">{{ field.label }}</span>
+                                <span class="input">{{ field }}</span>
+							</div>
+                            {% endfor %}
+			</div>
+                        {{ bill_content_formset.management_form }}
+			<table id="billTable" class="bill-table">
+			<tr>
+                        <th>S.No</th>
+                        <th>No. of Cans</th>
+                        <th>Rate</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for form in bill_content_formset.forms %}
+                    <tr>
+                        {% for field in form %}
+                            <td class="{% if field.errors %}error{% endif %}">{{ field }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+					</table>
+                    <button class="bill-button" type="submit">Submit</button>
+                </form>
+				</div>
+            </div>
+	</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script src="{% static "js/bill.js" %}" ></script>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.db import models
 
-from utils import today, purchase_bill_number, company_bill_number, lot_number
+from utils import today, purchase_bill_number, company_bill_number, lot_number, ice_bill_number
 
 
 class Bill(models.Model):
@@ -77,3 +77,23 @@ class LotContent(models.Model):
     quantity = models.DecimalField("Quantity", blank=False, max_digits=10, decimal_places=3)
     no_of_boxes_with_identifier = models.CharField("Number of boxes with identifier", blank=False, max_length=10)
     lot = models.ForeignKey(Lot)
+
+
+class IceBill(models.Model):
+
+    bill_no = models.CharField("Bill No", blank=False, unique=True, default=ice_bill_number, max_length=12)
+    date = models.DateField("lot date", default=today, db_index=True, blank=False)
+    company_name = models.CharField("company name", blank=False, max_length=50)
+    company_address = models.CharField("company address", blank=False, max_length=50)
+    
+    def __unicode__(self):
+        return u'%s' % (self.bill_no)
+        
+        
+class IceContent(models.Model):
+
+    s_no = models.CharField("S.No.", blank=False, max_length=3)
+    no_of_cans = models.DecimalField("Number of Cans", blank=False, max_digits=10, decimal_places=3)
+    rate = models.DecimalField("Rate", blank=False, max_digits=8, decimal_places=3)
+    price = models.DecimalField("Price", blank=False, max_digits=10, decimal_places=3)
+    ice_bill = models.ForeignKey(IceBill)

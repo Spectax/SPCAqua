@@ -31,6 +31,22 @@
                         </tr>
                     {% endfor %}
                     </table>
+                {% elif type == "ice_bill" %}
+                    <h1>Ice Bill</h1>
+                    <table class="list-table">
+                        <tr>
+                            <th>Date</th>
+                            <th>Ice Bill Number</th>
+                            <th>Company Name</th>
+                        </tr>
+                    {% for bill in bills %}
+                        <tr>
+                            <td>{{ bill.date }}</td>
+                            <td><a href="{% url "printicebill" bill.bill_no %}">{{ bill.bill_no }}</a></td>
+                            <td>{{ bill.company_name }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
                 {% else %}
                     <h1>{% if type == "purchase_bill" %}Purchase Bills{% else %}Company Bills{% endif %}</h1>
                     <table class="list-table">
