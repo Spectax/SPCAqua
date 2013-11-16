@@ -16,8 +16,11 @@ from spcaqua.forms import (
 )
 from spcaqua.models import (
     PurchaseBill,
+    PurchaseBillContent,
     CompanyBill,
+    CompanyBillContent,
     Lot,
+    LotContent,
 )
 
 
