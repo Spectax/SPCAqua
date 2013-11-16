@@ -19,12 +19,12 @@
             <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
             <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">Purchase Bill</div>
-            <div style="float:left;">Date:</div>
-			<div style="float:right;">Bill No:</div>
+            <div style="margin-bottom:10px;font-size:18px;">Bill</div>
+            <div style="float:left;">Date:{{ bill.date }}</div>
+			<div style="float:right;">Bill No:{{ bill.bill_no }}</div>
             <br />
-			<div style="float:left; font-size:16px;">Agent Name:</div>
-            <div style="float:right; font-size:16px;">Place:</div>
+			<div style="float:left; font-size:16px;">Name:{{ bill.name }}</div>
+            <div style="float:right; font-size:16px;">Place:{{ bill.place }}</div>
             <br />
 			<table id="billTable" class="bill-table">
 				<tr>
@@ -32,49 +32,23 @@
 					<th>Count</th>
 					<th>Quantity (kgs)</th>
 					<th>Rate</th>
-					<th>Rupees</th>
+					<th>Price</th>
 				</tr>
+                {% for row in bill_content %}
 				<tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
+					<td>{{ row.s_no }}</td>
+					<td style="font-weight:bold;font-family:arial">{{ row.count }}</td>
+					<td>{{ row.quantity }}</td>
+					<td>{{ row.rate }}</td>
+					<td>{{ row.price }}</td>
 				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
+                {% endfor %}
                 <tr>
                     <td style="border-top:1px solid black;"></td>
                     <td style="border-top:1px solid black;"></td>
-                    <td style="border-top:1px solid black;">2500</td>
+                    <td style="border-top:1px solid black;">{{ row.total_quantity }}</td>
                     <td style="border-top:1px solid black;"></td>
-                    <td style="border-top:1px solid black;">123456</td>
+                    <td style="border-top:1px solid black;">Rs.{{ bill.total_price }}</td>
                 </tr>
 			</table>
             <div style="float:left;">Amount in Words:</div>
@@ -94,12 +68,12 @@
             <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
             <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">Purchase Bill</div>
-            <div style="float:left;">Date:</div>
-			<div style="float:right;">Bill No:</div>
+            <div style="margin-bottom:10px;font-size:18px;">Bill</div>
+            <div style="float:left;">Date:{{ bill.date }}</div>
+			<div style="float:right;">Bill No:{{ bill.bill_no }}</div>
             <br />
-			<div style="float:left; font-size:16px;">Agent Name:</div>
-            <div style="float:right; font-size:16px;">Place:</div>
+			<div style="float:left; font-size:16px;">Name:{{ bill.name }}</div>
+            <div style="float:right; font-size:16px;">Place:{{ bill.place }}</div>
             <br />
 			<table id="billTable" class="bill-table">
 				<tr>
@@ -107,49 +81,23 @@
 					<th>Count</th>
 					<th>Quantity (kgs)</th>
 					<th>Rate</th>
-					<th>Rupees</th>
+					<th>Price</th>
 				</tr>
+                {% for row in bill_content %}
 				<tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
+					<td>{{ row.s_no }}</td>
+					<td style="font-weight:bold;font-family:arial">{{ row.count }}</td>
+					<td>{{ row.quantity }}</td>
+					<td>{{ row.rate }}</td>
+					<td>{{ row.price }}</td>
 				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
-                <tr>
-					<td>1.</td>
-					<td style="font-weight:bold;font-family:arial">60 V</td>
-					<td>500</td>
-					<td>200</td>
-					<td>100000</td>
-				</tr>
+                {% endfor %}
                 <tr>
                     <td style="border-top:1px solid black;"></td>
                     <td style="border-top:1px solid black;"></td>
-                    <td style="border-top:1px solid black;">2500</td>
+                    <td style="border-top:1px solid black;">{{ row.total_quantity }}</td>
                     <td style="border-top:1px solid black;"></td>
-                    <td style="border-top:1px solid black;">123456</td>
+                    <td style="border-top:1px solid black;">Rs.{{ bill.total_price }}</td>
                 </tr>
 			</table>
             <div style="float:left;">Amount in Words:</div>
@@ -158,6 +106,7 @@
             <div style="float:right">Manager:</div>
             <div style="">Checked By:</div>
 		</div>
+		<button class="print-button" onclick="window.print()">Print Bill</button>
 	</div>
 </div>
 </div>
