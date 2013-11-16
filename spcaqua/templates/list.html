@@ -8,15 +8,45 @@
         <div class="container-wrapper">
             <div class="card-white">
                 {% if type == "lot" %}
-                    <h1>Lots</h1>
+                    <h1>Lot Invoices</h1>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>Lot Number</th>
+                            <th>Company Name</th>
+                            <th>Seal Number</th>
+                            <th>Driver Name</th>
+                        </tr>
                     {% for lot in lots %}
-                        <p>{{ lot.date }} - {{ lot.lot_no }} - {{ lot.company_name }} - {{ lot.driver_name }}</p>
+                        <tr>
+                            <td>{{ lot.date }}</td>
+                            <td><a href="#">{{ lot.lot_no }}</a></td>
+                            <td>{{ lot.company_name }}</td>
+                            <td>{{ lot.seal_number}}</td>
+                            <td>{{ lot.driver_name }}</td>
+                        </tr>
                     {% endfor %}
+                    </table>
                 {% else %}
-                    <h1>{% if type == "purchase_bill" %}Purchase Bill{% else %}Company Bill{% endif %}</h1>
+                    <h1>{% if type == "purchase_bill" %}Purchase Bills{% else %}Company Bills{% endif %}</h1>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>Bill Number</th>
+                            <th>Name</th>
+                            <th>Total Price</th>
+                        </tr>
                     {% for bill in bills %}
-                        <p>{{ bill.date }} - {{ bill.bill_no }} - {{ bill.name }} - {{ bill.total_price }}</p>
+                    
+                        <tr>
+                            <td>{{ bill.date }}</td>
+                            <td><a href="#">{{ bill.bill_no }}</a></td>
+                            <td>{{ bill.name }}</td>
+                            <td>Rs.{{ bill.total_price }}</td>
+                        </tr>
+                        
                     {% endfor %}
+                    </table>
                 {% endif %}
             </div>
         </div>
