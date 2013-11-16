@@ -103,7 +103,7 @@ function bindKeyUp(num)
 	});
 }
 
-function validateBill()
+function validatePurchaseBill()
 {
 	var tosubmit = false;
     for(var i=0;i<5;i++)
