@@ -90,7 +90,7 @@ class IceBill(models.Model):
         return u'%s' % (self.bill_no)
         
         
-class IceContent(models.Model):
+class IceBillContent(models.Model):
 
     s_no = models.CharField("S.No.", blank=False, max_length=3)
     no_of_cans = models.DecimalField("Number of Cans", blank=False, max_digits=10, decimal_places=3)
