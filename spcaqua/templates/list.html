@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block body %}
+<div class="body-container">
+    <div class="main-wrapper">
+        <div class="container-wrapper">
+            <div class="card-white">
+                {% if type == "lot" %}
+                    <h1>Lots</h1>
+                    {% for lot in lots %}
+                        <p>{{ lot.date }} - {{ lot.lot_no }} - {{ lot.company_name }} - {{ lot.driver_name }}</p>
+                    {% endfor %}
+                {% else %}
+                    <h1>{% if type == "purchase_bill" %}Purchase Bill{% else %}Company Bill{% endif %}</h1>
+                    {% for bill in bills %}
+                        <p>{{ bill.date }} - {{ bill.bill_no }} - {{ bill.name }} - {{ bill.total_price }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
