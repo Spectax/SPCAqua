@@ -20,7 +20,7 @@
                     {% for lot in lots %}
                         <tr>
                             <td>{{ lot.date }}</td>
-                            <td><a href="#">{{ lot.lot_no }}</a></td>
+                            <td><a href="{% url "printlot" lot.lot_no %}">{{ lot.lot_no }}</a></td>
                             <td>{{ lot.company_name }}</td>
                             <td>{{ lot.seal_number}}</td>
                             <td>{{ lot.driver_name }}</td>
@@ -40,7 +40,7 @@
                     
                         <tr>
                             <td>{{ bill.date }}</td>
-                            <td><a href="#">{{ bill.bill_no }}</a></td>
+                            <td><a href="{% if type == "purchase_bill" %}{% url "printpurchasebill" bill.bill_no %}{% else %}{% url "printcompanybill" bill.bill_no %}{% endif %}">{{ bill.bill_no }}</a></td>
                             <td>{{ bill.name }}</td>
                             <td>Rs.{{ bill.total_price }}</td>
                         </tr>
