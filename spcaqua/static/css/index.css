@@ -159,9 +159,9 @@ ul.no-bullets {
   margin: 10px auto;
 }
 .body-wrapper .card-mini {
-  width: 200px;
+  width: 160px;
   display: inline-block;
-  padding: 40px;
+  padding: 40px 20px;
   background-color: #755EEB;
   color: white;
   text-decoration: none;
