@@ -18,7 +18,7 @@ function bindKeyUp(num)
 	});
 }
 
-function validatePurchaseBill()
+function validateBill()
 {
 	var tosubmit = false;
     for(var i=0;i<5;i++)
