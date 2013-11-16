@@ -219,7 +219,8 @@ return str;
 }
 
 $(document).ready(function(){
-    var totalPrice = ''+parseInt({{ bill.total_price }});
+    //var totalPrice = ''+parseInt({{ bill.total_price }});
+    var totalPrice = {{ bill.total_price|stringformat:"d" }};
     var wordPrice = numToString(totalPrice);
     $('.word-amount').text(wordPrice);
 });
