@@ -256,7 +256,8 @@ def print_purchase_bill(request, bill_no):
     bill = get_object_or_404(PurchaseBill, bill_no=bill_no)
     bill_content = get_list_or_404(PurchaseBillContent, purchase_bill=bill)
     ctx = {"bill": bill,
-           "bill_content": bill_content}
+           "bill_content": bill_content,
+           "type": "purchase_bill"}
     return render_to_response('printbill.html', ctx)
 
 
@@ -265,7 +266,8 @@ def print_company_bill(request, bill_no):
     bill = get_object_or_404(CompanyBill, bill_no=bill_no)
     bill_content = get_list_or_404(CompanyBillContent, company_bill=bill)
     ctx = {"bill": bill,
-           "bill_content": bill_content}
+           "bill_content": bill_content,
+           "type": "company_bill"}
     return render_to_response('printbill.html', ctx)
 
 

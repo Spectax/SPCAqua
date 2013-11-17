@@ -16,10 +16,18 @@
 		<div class="bill">
 			<img src="{% static "images/logo.png" %}" style="float:left;height:80px;width:80px;" />
             <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
-            <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
+            <div style="font-size:32px;font-family:arial;font-weight:bold;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
             <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">Bill</div>
+            <div style="margin-bottom:10px;font-size:18px;">
+            {% if type == "purchase_bill" %}
+            Purchase Bill
+            {% elif type == "company_bill" %}
+            CompanyBill
+            {% else %}
+            Bill
+            {% endif %}
+            </div>
             <div style="float:left;">Date: {{ bill.date }}</div>
 			<div style="float:right;">Bill No: {{ bill.bill_no }}</div>
             <br />
@@ -65,10 +73,18 @@
 		<div class="bill">
 			<img src="{% static "images/logo.png" %}" style="float:left;height:80px;width:80px;" />
             <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
-            <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
+            <div style="font-size:32px;font-family:arial;font-weight:bold;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
             <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">Bill</div>
+            <div style="margin-bottom:10px;font-size:18px;">
+            {% if type == "purchase_bill" %}
+            Purchase Bill
+            {% elif type == "company_bill" %}
+            CompanyBill
+            {% else %}
+            Bill
+            {% endif %}
+            </div>
             <div style="float:left;">Date: {{ bill.date }}</div>
 			<div style="float:right;">Bill No: {{ bill.bill_no }}</div>
             <br />
