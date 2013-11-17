@@ -19,7 +19,7 @@ class CompanyBillForm(forms.ModelForm):
 
     class Meta:
         model = CompanyBill
-        exclude = ("total_price", "total_quantity",)
+        exclude = ("total_price", "total_quantity", "created_at")
         widgets = {
             "bill_no": forms.HiddenInput(),
         }
@@ -47,7 +47,7 @@ class PurchaseBillForm(forms.ModelForm):
 
     class Meta:
         model = PurchaseBill
-        exclude = ("total_price", "total_quantity",)
+        exclude = ("total_price", "total_quantity", "created_at")
         widgets = {
             "bill_no": forms.HiddenInput(),
         }
@@ -75,7 +75,7 @@ class LotForm(forms.ModelForm):
 
     class Meta:
         model = Lot
-        exclude= ("total_quantity",)
+        exclude= ("total_quantity", "created_at")
         widgets = {
             "lot_no": forms.HiddenInput(),
         }
@@ -107,6 +107,7 @@ class IceBillForm(forms.ModelForm):
 
     class Meta:
         model = IceBill
+        exclude= ("created_at")
         widgets = {
             "bill_no": forms.HiddenInput(),
         }

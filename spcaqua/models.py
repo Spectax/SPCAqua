@@ -8,6 +8,8 @@ class Bill(models.Model):
     date = models.DateField("bill date", default=today, db_index=True, blank=False)
     name = models.CharField("name", blank=False, max_length=50)
     place = models.CharField("place", blank=True, max_length=50)
+    
+    created_at = models.DateField("bill creation date", default=today, db_index=True, blank=False)
 
     total_quantity = models.DecimalField("total quantity", max_digits=10, decimal_places=3, blank=False)
     total_price = models.DecimalField("total price", max_digits=10, decimal_places=3, blank=False)
@@ -66,6 +68,8 @@ class Lot(models.Model):
     driver_name = models.CharField("driver name", blank=False, max_length=50)
     driver_phone = models.CharField("driver phone number", blank=False, max_length=12)
     
+    created_at = models.DateField("Lot creation date", default=today, db_index=True, blank=False)
+    
     def __unicode__(self):
         return u'%s' % (self.lot_no)
 
@@ -85,6 +89,8 @@ class IceBill(models.Model):
     date = models.DateField("lot date", default=today, db_index=True, blank=False)
     company_name = models.CharField("company name", blank=False, max_length=50)
     company_address = models.CharField("company address", blank=False, max_length=50)
+    
+    created_at = models.DateField("bill creation date", default=today, db_index=True, blank=False)
     
     def __unicode__(self):
         return u'%s' % (self.bill_no)

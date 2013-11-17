@@ -8,7 +8,7 @@ def today():
 
 
 def purchase_bill_number():
-    bills_today = spcaqua.models.PurchaseBill.objects.filter(date=today)
+    bills_today = spcaqua.models.PurchaseBill.objects.filter(created_at=today)
     if not bills_today:
         total_bills_today = 0
     else:
@@ -23,7 +23,7 @@ def purchase_bill_number():
 
 
 def company_bill_number():
-    bills_today = spcaqua.models.CompanyBill.objects.filter(date=today)
+    bills_today = spcaqua.models.CompanyBill.objects.filter(created_at=today)
     if not bills_today:
         total_bills_today = 0
     else:
@@ -38,7 +38,7 @@ def company_bill_number():
 
 
 def lot_number():
-    lots_today = spcaqua.models.Lot.objects.filter(date=today)
+    lots_today = spcaqua.models.Lot.objects.filter(created_at=today)
     if not lots_today:
         total_lots_today = 0
     else:
@@ -53,7 +53,7 @@ def lot_number():
 
     
 def ice_bill_number():
-    bills_today = spcaqua.models.IceBill.objects.filter(date=today)
+    bills_today = spcaqua.models.IceBill.objects.filter(created_at=today)
     if not bills_today:
         total_bills_today = 0
     else:
