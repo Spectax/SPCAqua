@@ -43,8 +43,14 @@
         </div>
 
         {% block script_base %}
-        <script src="{% static "js/jquery-1.9.1.min.js" %}"></script>
-        <script src="{% static "js/jquery-ui-1.10.3.custom.min.js" %}"></script>
+            <script src="{% static "js/jquery-1.9.1.min.js" %}"></script>
+            <script src="{% static "js/jquery-ui-1.10.3.custom.min.js" %}"></script>
+            <script>
+            $(document).ready(function(){
+                    $.datepicker.setDefaults({ dateFormat: 'dd/mm/yy' });
+                    $('#id_date').datepicker();
+            });
+            </script>
             {% block extra_script %}{% endblock %}
         {% endblock %}
 

@@ -30,12 +30,3 @@
 
 
 {% endblock %}
-
-{% block extra_script %}
-<script>
-$(document).ready(function(){
-        $.datepicker.setDefaults({ dateFormat: 'dd/mm/yy' });
-	$('#id_date').datepicker();
-});
-</script>
-{% endblock %}
