@@ -8,7 +8,11 @@ def today():
 
 
 def purchase_bill_number():
-    total_bills_today = spcaqua.models.PurchaseBill.objects.filter(date=today).count()
+    bills_today = spcaqua.models.PurchaseBill.objects.filter(date=today)
+    if not bills_today:
+        total_bills_today = 0
+    else:
+        total_bills_today = int(bills_today[0].bill_no[:-7])
     date_string = today().strftime("%d-%m-%y")
     date = date_string.split("-")
     day = date[0]
@@ -19,7 +23,11 @@ def purchase_bill_number():
 
 
 def company_bill_number():
-    total_bills_today = spcaqua.models.CompanyBill.objects.filter(date=today).count()
+    bills_today = spcaqua.models.CompanyBill.objects.filter(date=today)
+    if not bills_today:
+        total_bills_today = 0
+    else:
+        total_bills_today = int(bills_today[0].bill_no[:-7])
     date_string = today().strftime("%d-%m-%y")
     date = date_string.split("-")
     day = date[0]
@@ -30,7 +38,11 @@ def company_bill_number():
 
 
 def lot_number():
-    total_lots_today = spcaqua.models.Lot.objects.filter(date=today).count()
+    lots_today = spcaqua.models.Lot.objects.filter(date=today)
+    if not lots_today:
+        total_lots_today = 0
+    else:
+        total_lots_today = int(lots_today[0].lot_no[:-7])
     date_string = today().strftime("%d-%m-%y")
     date = date_string.split("-")
     day = date[0]
@@ -41,7 +53,11 @@ def lot_number():
 
     
 def ice_bill_number():
-    total_bills_today = spcaqua.models.IceBill.objects.filter(date=today).count()
+    bills_today = spcaqua.models.IceBill.objects.filter(date=today)
+    if not bills_today:
+        total_bills_today = 0
+    else:
+        total_bills_today = int(bills_today[0].bill_no[:-7])
     date_string = today().strftime("%d-%m-%y")
     date = date_string.split("-")
     day = date[0]
