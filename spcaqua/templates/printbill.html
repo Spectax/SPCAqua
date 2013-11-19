@@ -4,7 +4,7 @@
 
 {% block style_base %}
     <link rel="stylesheet" type="text/css" href="{% static "css/printbill.css" %}"> 
-    <link href="http://fonts.googleapis.com/css?family=Bitter|Open+Sans:300" rel="stylesheet" type="text/css">
+    <!--<link href="http://fonts.googleapis.com/css?family=Bitter|Open+Sans:300" rel="stylesheet" type="text/css">-->
 {% endblock %}
 
 {% block wrapper_class %}body-wrapper testetet{% endblock %}
@@ -19,7 +19,7 @@
             <div style="font-size:32px;font-family:arial;font-weight:bold;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
             <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">
+            <div style="margin-bottom:10px;font-size:18px;font-weight:bold;">
             {% if type == "purchase_bill" %}
             Purchase Bill
             {% elif type == "company_bill" %}
@@ -28,8 +28,8 @@
             Bill
             {% endif %}
             </div>
-            <div style="float:left;">Date: {{ bill.date }}</div>
-			<div style="float:right;">Bill No: {{ bill.bill_no }}</div>
+            <div style="float:left;">Date: <span style="font-weight:bold;">{{ bill.date }}</span></div>
+			<div style="float:right;font-weight:bold;">Bill No: {{ bill.bill_no }}</div>
             <br />
 			<div style="float:left; font-size:16px;">Name: {{ bill.name }}</div>
             <div style="float:right; font-size:16px;">Place: {{ bill.place }}</div>
@@ -48,7 +48,7 @@
 					<td style="font-weight:bold;font-family:arial">{{ row.count }}</td>
 					<td>{{ row.quantity }}</td>
 					<td>{{ row.rate }}</td>
-					<td style="font-weight:bold;font-family:arial">{{ row.price }}</td>
+					<td style="font-family:arial;">{{ row.price }}</td>
 				</tr>
                 {% endfor %}
                 <tr>
@@ -68,6 +68,7 @@
 		<button class="print-button" onclick="window.print()">Print Bill</button>
 	</div>
 </div>
+{% comment %}
 <div class="bottom-wrapper">
 	<div class="container-wrapper">
 		<div class="bill">
@@ -122,9 +123,9 @@
             <div style="float:right">Manager:</div>
             <div style="">Checked By:</div>
 		</div>
-		<button class="print-button" onclick="window.print()">Print Bill</button>
 	</div>
 </div>
+{% endcomment %}
 </div>
 {% endblock %}
 
