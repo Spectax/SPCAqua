@@ -28,8 +28,8 @@
             Bill
             {% endif %}
             </div>
-            <div style="float:left;">Date: <span style="font-weight:bold;">{{ bill.date }}</span></div>
-			<div style="float:right;font-weight:bold;">Bill No: {{ bill.bill_no }}</div>
+            <div style="float:left;">Date: {{ bill.date }}</div>
+			<div style="float:right;font-weight:bold;">Bill No: <span style="font-weight:bold;">{{ bill.bill_no|slice:":-7" }}</span>{{ bill.bill_no|slice:"-7:" }}</div>
             <br />
 			<div style="float:left; font-size:16px;">Name: {{ bill.name }}</div>
             <div style="float:right; font-size:16px;">Place: {{ bill.place }}</div>

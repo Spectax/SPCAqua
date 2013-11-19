@@ -2,7 +2,7 @@ body {
   background-color: white;
   margin: 0px;
   padding: 0px;
-  font-family: "Open Sans", "Segoe UI", calibri, arial, helvetica;
+  font-family: "Segoe UI", calibri, arial, helvetica;
 }
 .top-wrapper {
   position: absolute;
@@ -37,6 +37,12 @@ body {
   color: #222;
   background-color: #fff;
   border-right: 1px dotted black;
+}
+.print-button {
+  width: 100px;
+  margin: 20px auto;
+  display: block;
+  padding: 6px 0px;
 }
 @media print {
   .bottom-wrapper {
