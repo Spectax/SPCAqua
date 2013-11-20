@@ -48,7 +48,7 @@ def menu(request):
 @login_required(login_url=reverse_lazy('login'))
 def add_purchase_bill(request):
 
-    PurchaseBillContentFormSet = formset_factory(PurchaseBillContentForm, max_num=5, extra=5, formset=RequiredFormSet)
+    PurchaseBillContentFormSet = formset_factory(PurchaseBillContentForm, max_num=12, extra=12, formset=RequiredFormSet)
 
     if request.method == 'POST':
         purchase_bill_form = PurchaseBillForm(request.POST)
@@ -85,7 +85,7 @@ def add_purchase_bill(request):
 @login_required(login_url=reverse_lazy('login'))
 def add_company_bill(request):
 
-    CompanyBillContentFormSet = formset_factory(CompanyBillContentForm, max_num=5, extra=5, formset=RequiredFormSet)
+    CompanyBillContentFormSet = formset_factory(CompanyBillContentForm, max_num=12, extra=12, formset=RequiredFormSet)
 
     if request.method == 'POST':
         company_bill_form = CompanyBillForm(request.POST)
@@ -122,7 +122,7 @@ def add_company_bill(request):
 @login_required(login_url=reverse_lazy('login'))
 def add_lot(request):
 
-    LotContentFormSet = formset_factory(LotContentForm, max_num=10, extra=10, formset=RequiredFormSet)
+    LotContentFormSet = formset_factory(LotContentForm, max_num=12, extra=12, formset=RequiredFormSet)
 
     if request.method == 'POST':
         lot_form = LotForm(request.POST)
