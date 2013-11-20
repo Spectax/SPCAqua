@@ -231,3 +231,12 @@ ul.no-bullets {
 .body-wrapper .clean-button:hover {
   background-color: #ddd;
 }
+@media print {
+  .menu,
+  .header-wrapper {
+    display: none!important;
+  }
+  .card-whit {
+    box-shadow: none!important;
+  }
+}

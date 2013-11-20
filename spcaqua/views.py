@@ -189,8 +189,12 @@ def search_company_bill(request):
         if form.is_valid():
             date = form.cleaned_data["date"]
             bills = get_list_or_404(CompanyBill, date=date)
+            grand_total = 0
+            for bill in bills:
+                grand_total += bill.total_price
             ctx = {"bills": bills,
-                   "type": "company_bill"}
+                   "type": "company_bill",
+                   "grand_total": grand_total}
             return render_to_response("list.html", ctx)
     else:
         form = SearchForm()
@@ -206,8 +210,12 @@ def search_purchase_bill(request):
         if form.is_valid():
             date = form.cleaned_data["date"]
             bills = get_list_or_404(PurchaseBill, date=date)
+            grand_total = 0
+            for bill in bills:
+                grand_total += bill.total_price
             ctx = {"bills": bills,
-                   "type": "purchase_bill"}
+                   "type": "purchase_bill",
+                   "grand_total": grand_total}
             return render_to_response("list.html", ctx)
     else:
         form = SearchForm()

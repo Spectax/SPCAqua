@@ -18,18 +18,19 @@
             <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
             <div style="font-size:32px;font-family:arial;font-weight:bold;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
-            <div style="margin-bottom:10px;">Cell: 9440273397</div>
+            <div style="margin-bottom:20px;">Cell: 9440273397</div>
             <div style="margin-bottom:10px;font-size:18px;font-weight:bold;">
             {% if type == "purchase_bill" %}
             Purchase Bill
             {% elif type == "company_bill" %}
-            CompanyBill
+            Company Bill
             {% else %}
             Bill
             {% endif %}
             </div>
-            <div style="float:left;">Date: {{ bill.date }}</div>
-			<div style="float:right;font-weight:bold;">Bill No: <span style="font-weight:bold;">{{ bill.bill_no|slice:":-7" }}</span>{{ bill.bill_no|slice:"-7:" }}</div>
+            <div style="float:left;">Date: <span style="font-weight:bold;">{{ bill.date }}</span></div>
+			<div style="float:right;">Bill No: <span style="font-weight:bold;">{{ bill.bill_no|slice:":-7" }}</span>{{ bill.bill_no|slice:"-7:" }}</div>
+            <br />
             <br />
 			<div style="float:left; font-size:16px;">Name: {{ bill.name }}</div>
             <div style="float:right; font-size:16px;">Place: {{ bill.place }}</div>
@@ -59,7 +60,7 @@
                     <td style="border-top:1px solid black;font-weight:bold;font-family:arial">Rs.{{ bill.total_price }}</td>
                 </tr>
 			</table>
-            <div style="float:left;">Amount in Words: Rupees <span class="word-amount" style="font-weight:bold;font-family:arial;"></span> Only</div>
+            <div style="float:left;">Amount in Words: <span class="word-amount" style="font-weight:bold;font-family:arial;"></span> Only</div>
             <br /><br />
             <div style="float:left;">Accountant:</div>
             <div style="float:right">Manager:</div>

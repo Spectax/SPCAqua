@@ -10,18 +10,19 @@
 {% block wrapper_class %}body-wrapper testetet{% endblock %}
 {% block topbar %}{% endblock %}
 {% block body %}
-<div class="body-container">
+<div class="body-container" style="font-family:calibri,arial;">
 <div class="main-wrapper">
 	<div class="container-wrapper">
 		<div class="bill">
 			<img src="{% static "images/logo.png" %}" style="float:left;height:80px;width:80px;" />
             <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
-            <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
+            <div style="font-size:32px;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
-            <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">Lot Invoice</div>
-            <div style="float:left;">Date: {{ lot.date }}</div>
-			<div style="float:right;">Bill No: {{ lot.lot_no }}</div>
+            <div style="margin-bottom:20px;">Cell: 9440273397</div>
+            <div style="margin-bottom:10px;font-size:18px;font-weight:bold;">Lot Invoice</div>
+            <div style="float:left;">Date: <span style="font-weight:bold;">{{ lot.date }}</span></div>
+			<div style="float:right;">Lot No: <span style="font-weight:bold;">{{ lot.lot_no|slice:":-7" }}</span>{{ lot.lot_no|slice:"-7:" }}</div>
+            <br />
             <br />
 			<div style="float:left; font-size:16px;">Company Name: {{ lot.company_name }}</div>
             <div style="float:right; font-size:16px;">Company Place: {{ lot.company_address }}</div>
@@ -42,15 +43,15 @@
                 {% for row in lot_content %}
 				<tr>
 					<td>{{ row.s_no }}</td>
-					<td style="font-weight:bold;font-family:arial">{{ row.count }}</td>
+					<td style="font-weight:bold;">{{ row.count }}</td>
 					<td>{{ row.quantity }}</td>
-					<td style="font-weight:bold;font-family:arial">{{ row.no_of_boxes_with_identifier }}</td>
+					<td style="font-weight:bold;">{{ row.no_of_boxes_with_identifier }}</td>
 				</tr>
                 {% endfor %}
                 <tr>
                     <td style="border-top:1px solid black;"></td>
                     <td style="border-top:1px solid black;"></td>
-                    <td style="border-top:1px solid black;font-weight:bold;font-family:arial">{{ lot.total_quantity }}</td>
+                    <td style="border-top:1px solid black;font-weight:bold;">{{ lot.total_quantity }}</td>
                     <td style="border-top:1px solid black;"></td>
                 </tr>
 			</table>
