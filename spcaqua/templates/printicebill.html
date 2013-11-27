@@ -18,10 +18,11 @@
             <img src="{% static "images/saibaba.gif" %}" style="float:right;height:90px;" />
             <div style="font-size:32px;font-family:arial;">Sai Sri Prawn Purchasing Center</div>
             <div >Gollavanthippa Road, Bhimavaram - 2</div>
-            <div style="margin-bottom:10px;">Cell: 9440273397</div>
-            <div style="margin-bottom:10px;font-size:18px;">Ice Bill</div>
-            <div style="float:left;">Date: {{ bill.date }}</div>
-			<div style="float:right;">Bill No: {{ bill.bill_no }}</div>
+            <div style="margin-bottom:20px;">Cell: 9440273397</div>
+            <div style="margin-bottom:10px;font-size:18px;font-weight:bold;">Ice Bill</div>
+            <div style="float:left;"><span style="font-weight:bold;">Date: {{ bill.date }}</span></div>
+			<div style="float:right;">Bill No: <span style="font-weight:bold;">{{ bill.bill_no|slice:":-7" }}</span>{{ bill.bill_no|slice:"-7:" }}</div>
+            <br />
             <br />
 			<div style="float:left; font-size:16px;">Company Name: {{ bill.company_name }}</div>
             <div style="float:right; font-size:16px;">Company Place: {{ bill.company_address }}</div>
