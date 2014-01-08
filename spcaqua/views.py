@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
 from django.forms.formsets import formset_factory, BaseFormSet
+
 from spcaqua.forms import (
     PurchaseBillForm,
     PurchaseBillContentForm,
@@ -26,7 +27,12 @@ from spcaqua.models import (
     IceBill,
     IceBillContent,
 )
-
+from spcaqua.utils import (
+    purchase_bill_number,
+    company_bill_number,
+    lot_number,
+    ice_bill_number,
+)
 
 
 class RequiredFormSet(BaseFormSet):
@@ -62,6 +68,7 @@ def add_purchase_bill(request):
                     total_quantity += form.cleaned_data.get("quantity")
                     total_price += form.cleaned_data.get("price")
             purchase_bill = purchase_bill_form.save(commit=False)
+            purchase_bill.bill_no = purchase_bill_number()
             purchase_bill.total_quantity = total_quantity
             purchase_bill.total_price = total_price
             purchase_bill.save()
@@ -99,6 +106,7 @@ def add_company_bill(request):
                     total_quantity += form.cleaned_data.get("quantity")
                     total_price += form.cleaned_data.get("price")
             company_bill = company_bill_form.save(commit=False)
+            company_bill.bill_no = company_bill_number()
             company_bill.total_quantity = total_quantity
             company_bill.total_price = total_price
             company_bill.save()
@@ -134,6 +142,7 @@ def add_lot(request):
                 if form.cleaned_data.get("quantity"):
                     total_quantity += form.cleaned_data.get("quantity")
             lot = lot_form.save(commit=False)
+            lot.lot_no = lot_number()
             lot.total_quantity = total_quantity
             lot.save()
             for form in lot_content_formset.forms:
@@ -163,7 +172,9 @@ def add_ice_bill(request):
         ice_bill_content_formset = IceBillContentFormSet(request.POST)
 
         if ice_bill_content_formset.is_valid() and ice_bill_form.is_valid():
-            ice_bill = ice_bill_form.save()
+            ice_bill = ice_bill_form.save(commit=False)
+            ice_bill.bill_no = ice_bill_number()
+            ice_bill.save()
             for form in ice_bill_content_formset.forms:
                 if form.cleaned_data.get("no_of_cans"):
                     ice_bill_content = form.save(commit=False)

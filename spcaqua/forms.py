@@ -19,15 +19,11 @@ class CompanyBillForm(forms.ModelForm):
 
     class Meta:
         model = CompanyBill
-        exclude = ("total_price", "total_quantity", "created_at")
-        widgets = {
-            "bill_no": forms.HiddenInput(),
-        }
+        exclude = ("total_price", "total_quantity", "created_at", "bill_no")
 
     def __init__(self, *args, **kwargs):
         super(CompanyBillForm, self).__init__(*args, **kwargs)
         self.fields.keyOrder = [
-            "bill_no",
             "name",
             "place",
             "date"
@@ -47,15 +43,11 @@ class PurchaseBillForm(forms.ModelForm):
 
     class Meta:
         model = PurchaseBill
-        exclude = ("total_price", "total_quantity", "created_at")
-        widgets = {
-            "bill_no": forms.HiddenInput(),
-        }
+        exclude = ("total_price", "total_quantity", "created_at", "bill_no")
 
     def __init__(self, *args, **kwargs):
         super(PurchaseBillForm, self).__init__(*args, **kwargs)
         self.fields.keyOrder = [
-            "bill_no",
             "name",
             "place",
             "date"
@@ -75,15 +67,11 @@ class LotForm(forms.ModelForm):
 
     class Meta:
         model = Lot
-        exclude= ("total_quantity", "created_at")
-        widgets = {
-            "lot_no": forms.HiddenInput(),
-        }
+        exclude= ("total_quantity", "created_at", "lot_no")
 
     def __init__(self, *args, **kwargs):
         super(LotForm, self).__init__(*args, **kwargs)
         self.fields.keyOrder = [
-            "lot_no",
             "company_name",
             "company_address",
             "vehicle_number",
@@ -107,15 +95,11 @@ class IceBillForm(forms.ModelForm):
 
     class Meta:
         model = IceBill
-        exclude= ("created_at")
-        widgets = {
-            "bill_no": forms.HiddenInput(),
-        }
+        exclude= ("created_at", "bill_no")
 
     def __init__(self, *args, **kwargs):
         super(IceBillForm, self).__init__(*args, **kwargs)
         self.fields.keyOrder = [
-            "bill_no",
             "company_name",
             "company_address",
             "date"
