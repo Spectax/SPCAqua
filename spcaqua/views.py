@@ -200,6 +200,7 @@ def search_company_bill(request):
         if form.is_valid():
             date = form.cleaned_data["date"]
             bills = get_list_or_404(CompanyBill, date=date)
+            bills.reverse()
             grand_total = 0
             for bill in bills:
                 grand_total += bill.total_price
@@ -221,6 +222,7 @@ def search_purchase_bill(request):
         if form.is_valid():
             date = form.cleaned_data["date"]
             bills = get_list_or_404(PurchaseBill, date=date)
+            bills.reverse()
             grand_total = 0
             for bill in bills:
                 grand_total += bill.total_price
@@ -242,6 +244,7 @@ def search_lot(request):
         if form.is_valid():
             date = form.cleaned_data["date"]
             lots = get_list_or_404(Lot, date=date)
+            lots.reverse()
             ctx = {"lots": lots,
                    "type": "lot"}
             return render_to_response("list.html", ctx)
@@ -260,6 +263,7 @@ def search_ice_bill(request):
         if form.is_valid():
             date = form.cleaned_data["date"]
             bills = get_list_or_404(IceBill, date=date)
+            bills.reverse()
             ctx = {"bills": bills,
                    "type": "ice_bill"}
             return render_to_response("list.html", ctx)
