@@ -26,7 +26,7 @@ class PurchaseBill(Bill):
     bill_no = models.CharField("purchase bill number", blank=False, unique=True, default=purchase_bill_number, max_length=12)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["created_at"]
 
 
 class CompanyBill(Bill):
@@ -34,7 +34,7 @@ class CompanyBill(Bill):
     bill_no = models.CharField("company bill number", blank=False, unique=True, default=company_bill_number, max_length=12)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["created_at"]
 
 
 class BillContent(models.Model):
@@ -80,7 +80,7 @@ class Lot(models.Model):
         return u'%s' % (self.lot_no)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["created_at"]
 
 
 class LotContent(models.Model):
@@ -105,7 +105,7 @@ class IceBill(models.Model):
         return u'%s' % (self.bill_no)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["created_at"]
 
         
 class IceBillContent(models.Model):
