@@ -4,7 +4,7 @@ import spcaqua
 
 
 def today():
-    return localtime(now()).date()
+    return localtime(now())
 
 
 def purchase_bill_number():
