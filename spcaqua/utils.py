@@ -1,4 +1,6 @@
-from django.utils.timezone import now, localtime
+from django.utils.timezone import now, localtime, timedelta
+
+from datetime import time, datetime
 
 import spcaqua
 
@@ -8,7 +10,11 @@ def today():
 
 
 def purchase_bill_number():
-    bills_today = spcaqua.models.PurchaseBill.objects.filter(created_at=today)
+    this_day = today()
+    next_day = this_day + timedelta(days=1)
+    this_day_start = datetime.combine(this_day, time())
+    this_day_end = datetime.combine(next_day, time())
+    bills_today = spcaqua.models.PurchaseBill.objects.filter(created_at__range=(this_day_start, this_day_end))
     if not bills_today:
         total_bills_today = 0
     else:
@@ -23,7 +29,11 @@ def purchase_bill_number():
 
 
 def company_bill_number():
-    bills_today = spcaqua.models.CompanyBill.objects.filter(created_at=today)
+    this_day = today()
+    next_day = this_day + timedelta(days=1)
+    this_day_start = datetime.combine(this_day, time())
+    this_day_end = datetime.combine(next_day, time())
+    bills_today = spcaqua.models.CompanyBill.objects.filter(created_at__range=(this_day_start, this_day_end))
     if not bills_today:
         total_bills_today = 0
     else:
@@ -38,7 +48,11 @@ def company_bill_number():
 
 
 def lot_number():
-    lots_today = spcaqua.models.Lot.objects.filter(created_at=today)
+    this_day = today()
+    next_day = this_day + timedelta(days=1)
+    this_day_start = datetime.combine(this_day, time())
+    this_day_end = datetime.combine(next_day, time())
+    lots_today = spcaqua.models.Lot.objects.filter(created_at__range=(this_day_start, this_day_end))
     if not lots_today:
         total_lots_today = 0
     else:
@@ -53,7 +67,11 @@ def lot_number():
 
     
 def ice_bill_number():
-    bills_today = spcaqua.models.IceBill.objects.filter(created_at=today)
+    this_day = today()
+    next_day = this_day + timedelta(days=1)
+    this_day_start = datetime.combine(this_day, time())
+    this_day_end = datetime.combine(next_day, time())
+    bills_today = spcaqua.models.IceBill.objects.filter(created_at__range=(this_day_start, this_day_end))
     if not bills_today:
         total_bills_today = 0
     else:
